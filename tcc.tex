@@ -4,7 +4,7 @@
 
 \usepackage{graphicx,url}
 
-%\usepackage[brazil]{babel}
+\usepackage[brazil]{babel}
 \usepackage[utf8]{inputenc}
 
 
@@ -28,6 +28,8 @@
     Católica do Paraná (PUCPR)\\
     Rua Imaculada Conceição, 1155\\
     CEP 80215-901 – Curitiba, PR – Brasil
+    \email{miguelceccineto@gmail.com, contato@pauloalvesjr.com,
+     alceu@ppgia.pucpr.br}
 }
 
 \begin{document}
@@ -49,43 +51,61 @@ Discutir assuntos na internet pode ser difícil. Ameaças, ofensas pessoais, e a
 
 Recentemente, em resposta ao crescimento do uso de redes sociais, comentários são publicados massivamente. Como a escrita compõe grande parte de todos os dados gerados pela humanidade, que até então, apenas serviam para consultas, hoje servem como base de dados para o desenvolvimento de sistemas de processamento de linguagens naturais. Aplicando técnicas de aprendizagem profunda e processamento de linguagens naturais podemos automatizar processos análise e classificação de textos com uma boa taxa de acerto, comparado à classificação por métodos bayesianos, por exemplo.
 
-No problema de classificação de comentários tóxicos, basicamente a análise de sentimentos é utilizada para representar em quais classes de toxicidade a pertence. Formalmente, dada a sentença s, o objetivo da análise de sentimentos é extrair a seguinte sêxtupla:
+No problema de classificação de comentários tóxicos, basicamente a análise de sentimentos é utilizada para representar em quais classes de toxicidade a pertence. Formalmente, dada a sentenças, o objetivo da análise de sentimentos é extrair a seguinte sêxtupla:
 
-A análise de sentimentos é determinada comumente de maneira binária (positiva e negativa), porém abordagens multiclasse também são possíveis. Em uma abordagem multiclasse determinado comentário pode possuir diversos rótulos simultaneamente. Nesse artigo exploraremos tal abordagem e utilizaremos redes neurais recorrentes em conjunto com estruturas celulares específicas, como células recorrentes bloqueadas (Cho et al. 2014) e células de longa memória de curto termo (Hochreiter & Schmidhuber. 1997). Abordaremos técnicas de transferência de aprendizado e construção de modelos de linguagem.
+A análise de sentimentos é determinada comumente de maneira binária (positiva e negativa), porém abordagens multiclasse também são possíveis. Em uma abordagem multiclasse determinado comentário pode possuir diversos rótulos simultaneamente. Nesse artigo exploraremos tal abordagem e utilizaremos redes neurais recorrentes em conjunto com estruturas celulares específicas, como células recorrentes bloqueadas \cite{DBLP:journals/corr/PascanuGCB13} e células de longa memória de curto termo \cite{sep:97}. Abordaremos técnicas de transferência de aprendizado e construção de modelos de linguagem.
 
 A utilização de redes neurais artificiais voltou a popularizar-se no reconhecimento de padrões em imagens devido a evolução de hardware, tais métodos de aprendizagem de máquina combinados ao processamento de linguagens naturais, permitem a avaliação automática de padrões e extração de conhecimento de bases de texto. A identificação de comentários ofensivos em textos é um derivado do caso geral de análise de sentimentos, na era da internet, identificar e classificar sentenças permite tomada de decisões e maior controle e filtragem de conteúdo. 
 
 \section{Trabalho Relacionado} \label{sec:relacionado}
 
-A análise de sentimentos está sob grande aprimoramento devido a aplicação de redes recorrentes (Karpathy. 2015), redes convolucionais (Lecun et al. 1998) e transferência de aprendizado (Howard & Ruder.  2018). Antes dessa abordagem, tal tarefa era realizada através de métodos utilizando contagem, ou extração de características processadas de maneira esparsa, para classificação utilizando algum método superficial de aprendizado, como por exemplo, máquinas de vetores de suporte (Vapnik et al. 1995), naive bayes e naive bayes svm (Wang and Manning. 2012).
+A análise de sentimentos está sob grande aprimoramento devido a aplicação de redes recorrentes (Karpathy. 2015), redes convolucionais \cite{lecun:98} e transferência de aprendizado \cite{DBLP:journals/corr/abs-1801-06146}. Antes dessa abordagem, tal tarefa era realizada através de métodos utilizando contagem, ou extração de características processadas de maneira esparsa, para classificação utilizando algum método superficial de aprendizado, como por exemplo, máquinas de vetores de suporte (Vapnik et al. 1995), naive bayes e naive bayes svm (Wang and Manning. 2012).
 
 O principal problema do método superficial citado acima, é que ele não é capaz de identificar o contexto de palavras, não sendo uma opção robusta para classificação.
 
-Redes recorrentes e suas variações são aplicadas utilizando comumente matrizes que definem significado próximos ao real para cada palavra, como por exemplo Word2Vec (Mikolov et al. 2013) ou GloVe (Socher et al. 2014). Tais métodos provem contexto utilizando palavras próximas (modelo skip-gram) para modelas matrizes e consequentemente contexto para redes recorrentes.
+Redes recorrentes e suas variações são aplicadas utilizando comumente matrizes que definem significado próximos ao real para cada palavra, como por exemplo Word2Vec \cite{DBLP:journals/corr/abs-1301-3781} ou GloVe (Socher et al. 2014). Tais métodos provem contexto utilizando palavras próximas (modelo skip-gram) para modelas matrizes e consequentemente contexto para redes recorrentes.
 
-Transferência de aprendizado de bancos de dados maiores é um desafio na área de processamento de linguagens naturais. Trabalhos recentes propõem a utilização de modelos de linguagem universais, que sofrerão afinação (fine tuning) para atender uma tarefa específica (Howard & Ruder.  2018) com a possibilidade de utilização de dados não supervisionados para gerar um aumento de performance (Radford et al. 2018). A utilização de dados não rotulados permite reduzir drasticamente a necessidade de exemplos rotulados. O estado da arte da maioria das tarefas na área de linguagens naturais está relacionado ao uso de transferência de aprendizado e aprendizado não supervisionado, que é um dos maiores desafios atualmente.
+Transferência de aprendizado de bancos de dados maiores é um desafio na área de processamento de linguagens naturais. Trabalhos recentes propõem a utilização de modelos de linguagem universais, que sofrerão afinação (fine tuning) para atender uma tarefa específica \cite{DBLP:journals/corr/abs-1801-06146} com a possibilidade de utilização de dados não supervisionados para gerar um aumento de performance (Radford et al. 2018). A utilização de dados não rotulados permite reduzir drasticamente a necessidade de exemplos rotulados. O estado da arte da maioria das tarefas na área de linguagens naturais está relacionado ao uso de transferência de aprendizado e aprendizado não supervisionado, que é um dos maiores desafios atualmente.
 
 \subsection{Funções de ativação}
 
-Funções de ativação não lineares, dão capacidades não lineares para redes neurais (Lecun et al. 1998).
+Funções de ativação não lineares, dão capacidades não lineares para redes neurais \cite{lecun:98}.
 
 \subsubsection{ReLU - Rectified Linear Activation Function}
 
-Dada pela fórmula: FORMULA
+Dada pela fórmula:
+
+\begin{equation}
+    ReLU(Z) = max(0, Z)
+\end{equation}
 
 A imagem abaixo descreve expressão da ReLU em um intervalo de 5 a –5.
 
-IMAGEM RELU
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.5\textwidth]{images/relu.png}
+\caption{Unidade Linear Retificada}
+\label{fig:relu}
+\end{figure}
 
-É a função de otimização padrão recomendada para uso na maioria das redes neurais. Aplicando essa função no output de uma transformação linear produz uma transformação não linear. A função permanece muito próxima de ser linear, contudo, no sentido de que é uma função linear por partes com duas peças lineares. Como as unidades lineares retificadas são quase lineares, elas preservam as propriedades que tornam os modelos lineares fáceis de otimizar com métodos baseados em gradiente. Eles também preservam muitas das propriedades que fazem modelos lineares generalizarem sistemas a partir de componentes mínimos (Goodfellow et al. 2017).
+É a função de otimização padrão recomendada para uso na maioria das redes neurais. Aplicando essa função no output de uma transformação linear produz uma transformação não linear. A função permanece muito próxima de ser linear, contudo, no sentido de que é uma função linear por partes com duas peças lineares. Como as unidades lineares retificadas são quase lineares, elas preservam as propriedades que tornam os modelos lineares fáceis de otimizar com métodos baseados em gradiente. Eles também preservam muitas das propriedades que fazem modelos lineares generalizarem sistemas a partir de componentes mínimos \cite{Goodfellow-et-al-2016}.
 
 \subsubsection{Sigmoide}
 
-A função sigmoide é dada pela formula: FORMULA
+A função sigmoide é dada pela formula:
+
+\begin{equation}
+    \sigma(Z) = 1/(1+e^{-Z})
+\end{equation}
 
 A imagem abaixo descreve a curva sigmoidal em um intervalo de 5 a –5.
 
-IMAGEM SIGMOIDE
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.5\textwidth]{images/sigmoid.png}
+\caption{Curva Sigmoidal}
+\label{fig:sigmoid}
+\end{figure}
 
 Aplicando essa função no output de uma transformação linear, teremos como resultado um valor entre 0 e 1.
 
@@ -93,9 +113,20 @@ Além de a função sigmoide ser utilizada na estrutura de células de longa mem
 
 \subsubsection{Tangente Hiperbólica}
 
-Dada pela formula:  FORMULA
+Dada pela formula: 
+
+\begin{equation}
+    \sigma(Z) = 1/(1+e^{-Z})
+\end{equation}
 
 A imagem abaixo descreve a curva da tangente hiperbolica em um intervalo de 5 a -5.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.5\textwidth]{images/tanh.png}
+\caption{Curva Tangente Hiperbólica}
+\label{fig:tanh}
+\end{figure}
 
 Produz um resultado entre 1 e -1, e é usada na estrutura de células simples de redes recorrentes, células de longa memória de curto termo e células recorrentes bloqueada. Em comparação a função de ativação sigmoide, possui a vantagem de ser simétrica em relação ao eixo x.
 
@@ -105,29 +136,38 @@ Produz um resultado entre 1 e -1, e é usada na estrutura de células simples de
 
 Infelizmente ainda não existe um consenso sobre qual é o melhor algoritmo de otimização. Schaul et al. (2014) apresentou uma comparação valiosa com um grande número de algoritmos de otimização através de uma ampla variedade de tarefas de otimização. Enquanto os resultados sugeriam que a família de algoritmos com taxa de aprendizado adaptativa (como RMSProp e AdaDelta) apresentavam desempenho robusto, não houve um único algoritmo que emergiu sobre os outros.
 
-Atualmente, os algoritmos de otimização mais populares são Gradiente Descendente Estocástico, Gradiente Descendente Estocástico com Momento, RMSProp, RMSProp com Momento, AdaDelta e Adam. A escolha de qual algoritmo de otimização usar, parece depender mais na familiaridade do desenvolvedor com o com o algoritmo (para afinar os hiperparametros mais facilmente) (Goodfellow et al. 2017).
+Atualmente, os algoritmos de otimização mais populares são Gradiente Descendente Estocástico, Gradiente Descendente Estocástico com Momento, RMSProp, RMSProp com Momento, AdaDelta e Adam. A escolha de qual algoritmo de otimização usar, parece depender mais na familiaridade do desenvolvedor com o com o algoritmo (para afinar os hiperparametros mais facilmente) \cite{Goodfellow-et-al-2016}.
 
 \subsubsection{Otimizador Adam}
 
-Com a utilização de minibatches, o progresso no gradiente tende a oscilar, logo o aprendizado pela rede se torna lento. Várias soluções foram propostas para solucionar esse problema, e a mais popular é uma junção das anteriores. O otimizador Adam (Kingma & Jimmy, 2014) utiliza a estimação do primeiro e do segundo momento dos gradientes.
+Com a utilização de minibatches, o progresso no gradiente tende a oscilar, logo o aprendizado pela rede se torna lento. Várias soluções foram propostas para solucionar esse problema, e a mais popular é uma junção das anteriores. O otimizador Adam \cite{DBLP:journals/corr/KingmaB14} utiliza a estimação do primeiro e do segundo momento dos gradientes.
 
 \subsection{Função de Custo}
 
-Um aspecto importante no desenvolvimento de redes neurais profundas é na escolha de função de custo. Felizmente, as funções de custo para redes neurais são mais ou menos as mesmas da de outros modelos paramétricos, assim como modelos lineares(Goodfellow et al. 2017).
+Um aspecto importante no desenvolvimento de redes neurais profundas é na escolha de função de custo. Felizmente, as funções de custo para redes neurais são mais ou menos as mesmas da de outros modelos paramétricos, assim como modelos lineares \cite{Goodfellow-et-al-2016}.
 
 \subsubsection{Entropia Cruzada}
 
-O cálculo do custo por entropia cruzada é dado pela seguinte formula: FORMULA
+O cálculo do custo por entropia cruzada é dado pela seguinte formula:
+
+\begin{equation}
+    CE = -\sum\limits_{x} p(x)\log q(x)
+\end{equation}
 
 \subsection{Regularização}
 
-Um problema central em aprendizado de máquina é como fazer um algoritmo que irá ter um bom desempenho não somente nos dados de treino, mas também em novos dados inseridos nele. Muitas estratégias usadas em aprendizado de máquina são explicitamente desenvolvidas para reduzir o erro no conjunto de teste, possivelmente à custa de um erro maior no conjunto de treino. Essas estratégias são conhecidas coletivamente como regularização (Goodfellow et al. 2017).
+Um problema central em aprendizado de máquina é como fazer um algoritmo que irá ter um bom desempenho não somente nos dados de treino, mas também em novos dados inseridos nele. Muitas estratégias usadas em aprendizado de máquina são explicitamente desenvolvidas para reduzir o erro no conjunto de teste, possivelmente à custa de um erro maior no conjunto de treino. Essas estratégias são conhecidas coletivamente como regularização \cite{Goodfellow-et-al-2016}.
 
 O Dropout oferece pouco custo computacional, porém um método poderoso para regularização de uma ampla família de modelos (Srivastava et al. 2014).
 
-Especificamente, dropout treina o conjunto consistindo através de sub-redes geradas pela remoção de unidades que fazem parte das camadas intermediarias ou de entrada como ilustra a figura abaixo: (Goodfellow et al. 2017) (imagem).
+Especificamente, dropout treina o conjunto consistindo através de sub-redes geradas pela remoção de unidades que fazem parte das camadas intermediarias ou de entrada como ilustra a figura abaixo: \cite{Goodfellow-et-al-2016}.
 
-IMAGEM
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.8\textwidth]{images/dropout.png}
+\caption{Dropout}
+\label{fig:dropout}
+\end{figure}
 
 \subsection{Inicialização de parâmetros}
 
@@ -162,9 +202,9 @@ A segmentação a seguir representa como os dados foram separados:
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=.5\textwidth]{images/fig1.jpg}
-\caption{A typical figure}
-\label{fig:exampleFig1}
+\includegraphics[width=1\textwidth]{images/datasplit.png}
+\caption{Separacão de dados}
+\label{fig:datasplit}
 \end{figure}
 
 A segmentação de testes não está inclusa nos dados públicos. Tal teste é feita através de dados não divulgados na plataforma Kaggle.
@@ -175,9 +215,9 @@ Um modelo inicial foi definido para obter o primeiro resultado e utilizar uma t�
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=.5\textwidth]{images/fig1.jpg}
-\caption{A typical figure}
-\label{fig:exampleFig1}
+\includegraphics[width=.5\textwidth]{images/graph.png}
+\caption{Estrutura genérica de rede}
+\label{fig:graph}
 \end{figure}
 
 Embedding se refere a essa codificação. Utilizamos o conceito de vetores globais para representação de palavras (GloVe) pré-treinados em um crawler global.
@@ -211,14 +251,6 @@ Análises utilizando modelos de linguagem e transferência de aprendizado ainda 
 Os modelos testados apresentaram um resultado satisfatório, porém não melhor que o melhor resultado atual. Técnicas como transferência de aprendizado e modelo de linguagem não foram aplicadas. Há a possibilidade de reelaborar a célula que constrói a rede neural recorrente para atender melhor a este caso. Talvez a aplicação de uma rede de capsulas (Hilton et al. 2017) proporcionaria um resultado superior devido a não variação em translações, uma das características desta arquitetura. 
 
 \section{Referências Bibliográficas}
-
-Bibliographic references must be unambiguous and uniform.  We recommend giving
-the author names references in brackets, e.g. \cite{knuth:84},
-\cite{boulic:91}, and \cite{smith:99}.
-
-The references must be listed using 12 point font size, with 6 points of space
-before each reference. The first line of each reference should not be
-indented, while the subsequent should be indented by 0.5 cm.
 
 \bibliographystyle{templates/sbc}
 \bibliography{bibliography}
