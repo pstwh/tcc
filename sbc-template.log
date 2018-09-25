@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.24)  24 SEP 2018 02:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.24)  25 SEP 2018 02:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -102,19 +102,19 @@ LaTeX Warning: Label `fig:exampleFig1' multiply defined.
 )
 \openout1 = `sbc-template.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 28.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 33.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
@@ -204,22 +204,142 @@ Package grfext Info: Graphics extension search list:
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <16> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 30.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 35.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 30.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 35.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 30.
+(Font)              <12> on input line 35.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 30.
+(Font)              <8> on input line 35.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 30.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 32.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <13> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 41.
+(Font)              <6> on input line 35.
 
-./sbc-template.tex:49: Misplaced alignment tab character &.
-l.49 ...onga memória de curto termo (Hochreiter &
+
+./sbc-template.tex:35: Package inputenc Error: Unicode character ́ (U+301)
+(inputenc)                not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.35 \maketitle
+               
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+./sbc-template.tex:35: Package inputenc Error: Unicode character ̧ (U+327)
+(inputenc)                not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.35 \maketitle
+               
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+./sbc-template.tex:35: Package inputenc Error: Unicode character ̃ (U+303)
+(inputenc)                not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.35 \maketitle
+               
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+./sbc-template.tex:35: Package inputenc Error: Unicode character ́ (U+301)
+(inputenc)                not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.35 \maketitle
+               
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+./sbc-template.tex:35: Package inputenc Error: Unicode character ́ (U+301)
+(inputenc)                not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.35 \maketitle
+               
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+./sbc-template.tex:35: Package inputenc Error: Unicode character ́ (U+301)
+(inputenc)                not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.35 \maketitle
+               
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+./sbc-template.tex:35: Package inputenc Error: Unicode character ́ (U+301)
+(inputenc)                not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.35 \maketitle
+               
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+./sbc-template.tex:35: Package inputenc Error: Unicode character ̧ (U+327)
+(inputenc)                not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.35 \maketitle
+               
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+./sbc-template.tex:35: Package inputenc Error: Unicode character ̃ (U+303)
+(inputenc)                not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.35 \maketitle
+               
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 37.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <13> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 46.
+[1
+
+{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+./sbc-template.tex:54: Misplaced alignment tab character &.
+l.54 ...onga memória de curto termo (Hochreiter &
                                                    Schmidhuber. 1997). Abord...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -228,11 +348,8 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-[1
-
-{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-./sbc-template.tex:55: Misplaced alignment tab character &.
-l.55 ... e transferência de aprendizado (Howard &
+./sbc-template.tex:60: Misplaced alignment tab character &.
+l.60 ... e transferência de aprendizado (Howard &
                                                    Ruder.  2018). Antes dess...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -241,8 +358,8 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-./sbc-template.tex:61: Misplaced alignment tab character &.
-l.61 ...a atender uma tarefa específica (Howard &
+./sbc-template.tex:66: Misplaced alignment tab character &.
+l.66 ...a atender uma tarefa específica (Howard &
                                                    Ruder.  2018) com a possi...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -251,12 +368,9 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-[2]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [3]
-./sbc-template.tex:107: Misplaced alignment tab character &.
-l.107 ...s anteriores. O otimizador Adam (Kingma &
+[2] [3]
+./sbc-template.tex:112: Misplaced alignment tab character &.
+l.112 ...s anteriores. O otimizador Adam (Kingma &
                                                    Jimmy, 2014) utiliza a es...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -266,7 +380,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 [4]
-Underfull \hbox (badness 1062) in paragraph at lines 131--132
+Underfull \hbox (badness 1062) in paragraph at lines 136--137
 []\OT1/ptm/m/n/12 Comumente, es-ta-b-ele-ce-mos con-stantes os val-ores dos bi-ases es-col-hi-dos de
  []
 
@@ -274,21 +388,21 @@ Underfull \hbox (badness 1062) in paragraph at lines 131--132
 <images/fig1.jpg, id=23, 254.3904pt x 232.2276pt>
 File: images/fig1.jpg Graphic file (type jpg)
 <use images/fig1.jpg>
-Package pdftex.def Info: images/fig1.jpg  used on input line 160.
+Package pdftex.def Info: images/fig1.jpg  used on input line 165.
 (pdftex.def)             Requested size: 213.39568pt x 194.81471pt.
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 161.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 166.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 161.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 166.
 File: images/fig1.jpg Graphic file (type jpg)
 <use images/fig1.jpg>
-Package pdftex.def Info: images/fig1.jpg  used on input line 173.
+Package pdftex.def Info: images/fig1.jpg  used on input line 178.
 (pdftex.def)             Requested size: 213.39568pt x 194.81471pt.
-
-./sbc-template.tex:192: Misplaced alignment tab character &.
-l.192 ...avés da inicialização Glorot (Bengio &
+ [6 <./images/fig1.jpg>]
+./sbc-template.tex:197: Misplaced alignment tab character &.
+l.197 ...avés da inicialização Glorot (Bengio &
                                                    Glorot, 2010).
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -297,21 +411,21 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-[6 <./images/fig1.jpg>] (./sbc-template.bbl [7]) [8] (./sbc-template.aux)
+[7] (./sbc-template.bbl) [8] (./sbc-template.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 2585 strings out of 492649
- 36939 string characters out of 6129622
- 111341 words of memory out of 5000000
- 6426 multiletter control sequences out of 15000+600000
+ 2588 strings out of 492649
+ 36954 string characters out of 6129622
+ 111573 words of memory out of 5000000
+ 6429 multiletter control sequences out of 15000+600000
  20011 words of font info for 41 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,8n,28p,1184b,228s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on sbc-template.pdf (8 pages, 130518 bytes).
+Output written on sbc-template.pdf (8 pages, 130765 bytes).
 PDF statistics:
  57 PDF objects out of 1000 (max. 8388607)
  39 compressed objects within 1 object stream
