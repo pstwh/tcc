@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex sbc-template"] 1537853914 "sbc-template.aux" "sbc-template.bbl" "sbc-template" 1537853981
+["bibtex sbc-template"] 1537854313 "sbc-template.aux" "sbc-template.bbl" "sbc-template" 1537854313
   "./sbc.bst" 1111353940 22967 511e98fabaafd3202f10e6dbe23db027 ""
   "sbc-template.aux" 1537853980 2759 32089d0daad21ad8b74c88405fcbbfec ""
   "sbc-template.bib" 1111353218 751 68511f4e7f193ea26520e3a0792cfe96 ""
   (generated)
-  "sbc-template.bbl"
   "sbc-template.blg"
-["pdflatex"] 1537853980 "sbc-template.tex" "sbc-template.pdf" "sbc-template" 1537853981
+  "sbc-template.bbl"
+["pdflatex"] 1537853980 "sbc-template.tex" "sbc-template.pdf" "sbc-template" 1537854313
   "/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc" 1480098666 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2018/texmf-dist/fonts/tfm/adobe/helvetic/phvb7t.tfm" 1480098688 2240 eb56c13537f4d8a0bd3fafc25572b1bd ""
@@ -77,10 +77,10 @@
   "caption2.sty" 1537764980 15592 1abdd772634671aadce60e940a090ffc ""
   "images/fig1.jpg" 1111340092 39933 79da1f77b4599c71378d76c4aec374c6 ""
   "sbc-template.aux" 1537853980 2759 32089d0daad21ad8b74c88405fcbbfec ""
-  "sbc-template.bbl" 1537853914 664 72f3ed45505486cb648045678ea11d4f "bibtex sbc-template"
+  "sbc-template.bbl" 1537854313 664 72f3ed45505486cb648045678ea11d4f "bibtex sbc-template"
   "sbc-template.sty" 1142962734 5445 c11f91c7e54330186883fc8760b7b9df ""
   "sbc-template.tex" 1537853978 17768 02e37a03b687294e16d24ccd5ba15a68 ""
   (generated)
-  "sbc-template.log"
   "sbc-template.aux"
   "sbc-template.pdf"
+  "sbc-template.log"
