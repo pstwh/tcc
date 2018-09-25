@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.24)  25 SEP 2018 02:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.24)  25 SEP 2018 02:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -227,110 +227,6 @@ l.35 \maketitle
 You may provide a definition with
 \DeclareUnicodeCharacter 
 
-
-./sbc-template.tex:35: Package inputenc Error: Unicode character ̧ (U+327)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 \maketitle
-               
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-./sbc-template.tex:35: Package inputenc Error: Unicode character ̃ (U+303)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 \maketitle
-               
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-./sbc-template.tex:35: Package inputenc Error: Unicode character ́ (U+301)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 \maketitle
-               
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-./sbc-template.tex:35: Package inputenc Error: Unicode character ́ (U+301)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 \maketitle
-               
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-./sbc-template.tex:35: Package inputenc Error: Unicode character ́ (U+301)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 \maketitle
-               
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-./sbc-template.tex:35: Package inputenc Error: Unicode character ́ (U+301)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 \maketitle
-               
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-./sbc-template.tex:35: Package inputenc Error: Unicode character ̧ (U+327)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 \maketitle
-               
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-./sbc-template.tex:35: Package inputenc Error: Unicode character ̃ (U+303)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 \maketitle
-               
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/it' tried instead on input line 37.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <13> not available
@@ -417,15 +313,15 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 2588 strings out of 492649
- 36954 string characters out of 6129622
- 111573 words of memory out of 5000000
- 6429 multiletter control sequences out of 15000+600000
+ 2586 strings out of 492649
+ 36944 string characters out of 6129622
+ 111565 words of memory out of 5000000
+ 6427 multiletter control sequences out of 15000+600000
  20011 words of font info for 41 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,8n,28p,1184b,228s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,10n,28p,1184b,228s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on sbc-template.pdf (8 pages, 130765 bytes).
+Output written on sbc-template.pdf (8 pages, 130809 bytes).
 PDF statistics:
  57 PDF objects out of 1000 (max. 8388607)
  39 compressed objects within 1 object stream
