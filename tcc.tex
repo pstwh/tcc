@@ -53,19 +53,25 @@ Recentemente, em resposta ao crescimento do uso de redes sociais, comentários s
 
 No problema de classificação de comentários tóxicos, basicamente a análise de sentimentos é utilizada para representar em quais classes de toxicidade a pertence. Formalmente, dada a sentenças, o objetivo da análise de sentimentos é extrair a seguinte sêxtupla:
 
+\[
+(a\lambda1, a\lambda2, a\lambda3, a\lambda4, a\lambda5, a\lambda6)
+\]
+
+Onde $a \lambda i$ se refere a probabilidade de cada classe, que respectivamente representam: Toxico; Muito Toxico; Obsceno; Ameaça; Insulto; Ódio de Identidade.
+
 A análise de sentimentos é determinada comumente de maneira binária (positiva e negativa), porém abordagens multiclasse também são possíveis. Em uma abordagem multiclasse determinado comentário pode possuir diversos rótulos simultaneamente. Nesse artigo exploraremos tal abordagem e utilizaremos redes neurais recorrentes em conjunto com estruturas celulares específicas, como células recorrentes bloqueadas \cite{DBLP:journals/corr/PascanuGCB13} e células de longa memória de curto termo \cite{sep:97}. Abordaremos técnicas de transferência de aprendizado e construção de modelos de linguagem.
 
 A utilização de redes neurais artificiais voltou a popularizar-se no reconhecimento de padrões em imagens devido a evolução de hardware, tais métodos de aprendizagem de máquina combinados ao processamento de linguagens naturais, permitem a avaliação automática de padrões e extração de conhecimento de bases de texto. A identificação de comentários ofensivos em textos é um derivado do caso geral de análise de sentimentos, na era da internet, identificar e classificar sentenças permite tomada de decisões e maior controle e filtragem de conteúdo. 
 
 \section{Trabalho Relacionado} \label{sec:relacionado}
 
-A análise de sentimentos está sob grande aprimoramento devido a aplicação de redes recorrentes (Karpathy. 2015), redes convolucionais \cite{lecun:98} e transferência de aprendizado \cite{DBLP:journals/corr/abs-1801-06146}. Antes dessa abordagem, tal tarefa era realizada através de métodos utilizando contagem, ou extração de características processadas de maneira esparsa, para classificação utilizando algum método superficial de aprendizado, como por exemplo, máquinas de vetores de suporte (Vapnik et al. 1995), naive bayes e naive bayes svm (Wang and Manning. 2012).
+A análise de sentimentos está sob grande aprimoramento devido a aplicação de redes recorrentes (Karpathy. 2015), redes convolucionais \cite{lecun:98} e transferência de aprendizado \cite{DBLP:journals/corr/abs-1801-06146}. Antes dessa abordagem, tal tarefa era realizada através de métodos utilizando contagem, ou extração de características processadas de maneira esparsa, para classificação utilizando algum método superficial de aprendizado, como por exemplo, máquinas de vetores de suporte (Vapnik et al. 1995), naive bayes e naive bayes SVM (Wang and Manning. 2012).
 
 O principal problema do método superficial citado acima, é que ele não é capaz de identificar o contexto de palavras, não sendo uma opção robusta para classificação.
 
 Redes recorrentes e suas variações são aplicadas utilizando comumente matrizes que definem significado próximos ao real para cada palavra, como por exemplo Word2Vec \cite{DBLP:journals/corr/abs-1301-3781} ou GloVe (Socher et al. 2014). Tais métodos provem contexto utilizando palavras próximas (modelo skip-gram) para modelas matrizes e consequentemente contexto para redes recorrentes.
 
-Transferência de aprendizado de bancos de dados maiores é um desafio na área de processamento de linguagens naturais. Trabalhos recentes propõem a utilização de modelos de linguagem universais, que sofrerão afinação (fine tuning) para atender uma tarefa específica \cite{DBLP:journals/corr/abs-1801-06146} com a possibilidade de utilização de dados não supervisionados para gerar um aumento de performance (Radford et al. 2018). A utilização de dados não rotulados permite reduzir drasticamente a necessidade de exemplos rotulados. O estado da arte da maioria das tarefas na área de linguagens naturais está relacionado ao uso de transferência de aprendizado e aprendizado não supervisionado, que é um dos maiores desafios atualmente.
+Transferência de aprendizado é uma técnica onde um modelo já treinado é reajustado para detectar padrões diferentes dos iniciais. Geralmente usado quando a base de dados disponível é menor do que a usada no modelo já treinado. Trabalhos recentes propõem a utilização de modelos de linguagem universais, que sofrerão afinação (fine tuning) para atender uma tarefa específica \cite{DBLP:journals/corr/abs-1801-06146} com a possibilidade de utilização de dados não supervisionados para gerar um aumento de performance (Radford et al. 2018). A utilização de dados não rotulados permite reduzir drasticamente a necessidade de exemplos rotulados. O estado da arte da maioria das tarefas na área de linguagens naturais está relacionado ao uso de transferência de aprendizado e aprendizado não supervisionado, que é um dos maiores desafios atualmente.
 
 \subsection{Funções de ativação}
 
@@ -194,9 +200,9 @@ FORMULAS
 
 \section{Metodologia}
 
-\subsection{Organizando dados}
+\subsection{Organização dos dados}
 
-O banco de dados utilizou da técnica de separação de treino e teste, onde 90\% dos dados foi atribuída para treino e 10\% para validação. Essa técnica é conhecida como train-test-split. Em abordagens clássicas de aprendizado de máquina, normalmente é utilizada a validação cruzada, porém em casos de aprendizagem profunda a mesma é ineficiente. Como modelos de aprendizagem profunda possuem grande volume de dados, a abordagem mais popular em relação a desempenho e resultado é escolhida nesse trabalho.
+O banco de dados utilizou da técnica de separação de treino e teste, onde 90\% dos dados foi atribuída para treino e 10\% para validação. Essa técnica é conhecida como train-test-split. Em abordagens clássicas de aprendizado de máquina, normalmente é utilizada a validação cruzada, porém, o mesmo demora . Como modelos de aprendizagem profunda possuem grande volume de dados, a abordagem mais popular em relação a desempenho e resultado é escolhida nesse trabalho.
 
 A segmentação a seguir representa como os dados foram separados:
 
@@ -209,7 +215,7 @@ A segmentação a seguir representa como os dados foram separados:
 
 A segmentação de testes não está inclusa nos dados públicos. Tal teste é feita através de dados não divulgados na plataforma Kaggle.
 
-\subsection{Definindo modelo inicial}
+\subsection{Definição do modelo inicial}
 
 Um modelo inicial foi definido para obter o primeiro resultado e utilizar uma técnica bastante popular no segmento de aprendizagem profunda. A técnica de iteração, consiste na ideia de definir uma arquitetura inicial, e definir hiperparâmetros rapidamente. Como ponto de partida, foi utilizado uma arquitetura bastante popular e extremamente efetiva, sendo sem transferência de aprendizado, o estado da arte. A rede foi definida da seguinte forma:
 
