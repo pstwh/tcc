@@ -65,7 +65,7 @@ A utilização de redes neurais artificiais voltou a popularizar-se no reconheci
 
 \section{Trabalho Relacionado} \label{sec:relacionado}
 
-A análise de sentimentos está sob grande aprimoramento devido a aplicação de redes recorrentes (Karpathy. 2015), redes convolucionais \cite{lecun:98} e transferência de aprendizado \cite{DBLP:journals/corr/abs-1801-06146}. Antes dessa abordagem, tal tarefa era realizada através de métodos utilizando contagem, ou extração de características processadas de maneira esparsa, para classificação utilizando algum método superficial de aprendizado, como por exemplo, máquinas de vetores de suporte (Vapnik et al. 1995), naive bayes e naive bayes SVM (Wang and Manning. 2012).
+A análise de sentimentos está sob grande aprimoramento devido a aplicação de redes recorrentes \cite{karpathy:2015}, redes convolucionais \cite{lecun:98} e transferência de aprendizado \cite{DBLP:journals/corr/abs-1801-06146}. Antes dessa abordagem, tal tarefa era realizada através de métodos utilizando contagem, ou extração de características processadas de maneira esparsa, para classificação utilizando algum método superficial de aprendizado, como por exemplo, máquinas de vetores de suporte \cite{DBLP:journals/ml/CortesV95}, naive bayes e naive bayes SVM \cite{wang:2012}.
 
 O principal problema do método superficial citado acima, é que ele não é capaz de identificar o contexto de palavras, não sendo uma opção robusta para classificação.
 
@@ -186,6 +186,15 @@ Comumente, estabelecemos constantes os valores dos biases escolhidos de maneira 
 Word embedding é o nome coletivo de um conjunto de técnicas de modelagem de linguagem e de aprendizado de recursos no processamento de linguagem natural, em que palavras ou frases do vocabulário são mapeadas para vetores de números reais. Conceitualmente, envolve uma incorporação matemática de um espaço com uma dimensão por palavra para um espaço vetorial contínuo com uma dimensão muito menor.
 
 \subsection{Redes Neurais Recorrentes}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{images/rnn-effectiveness-examples.jpeg}
+\caption{
+    Possibilidades de entrada de saída em redes reccorentes. \cite{karpathy:2015}
+}
+\label{fig:sigmoid}
+\end{figure}
 
 \subsubsection{(GRU)}
 Células recorrentes bloqueadas são definidas pelas seguintes formulas:
