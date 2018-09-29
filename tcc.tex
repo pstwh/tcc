@@ -47,25 +47,31 @@
 
 \section{Introdução} \label{sec:introducao}
 
-Discutir assuntos na internet pode ser difícil. Ameaças, ofensas pessoais, e assédio, podem criar um ambiente tóxico dentro de fóruns e redes sociais, e até afastar usuários. As plataformas lutam para combater efetivamente discussões tóxicas e limitar ou desligar usuários com essas práticas.
+Discutir assuntos na internet pode ser difícil. Ameaças, ofensas pessoais, e assédio, podem criar um ambiente tóxico dentro de fóruns e redes sociais, e até afastar usuários. As plataformas lutam para combater efetivamente discussões tóxicas e limitar ou desligar usuários com essas práticas, porém essa é uma tarefa de difícil automação exigindo grande quantidade de dados e métodos capazes de analisar de maneira eficaz o contexto e significado de sentenças.
 
 Recentemente, em resposta ao crescimento do uso de redes sociais, comentários são publicados massivamente. Como a escrita compõe grande parte de todos os dados gerados pela humanidade, que até então, apenas serviam para consultas, hoje servem como base de dados para o desenvolvimento de sistemas de processamento de linguagens naturais. Aplicando técnicas de aprendizagem profunda e processamento de linguagens naturais podemos automatizar processos análise e classificação de textos com uma boa taxa de acerto, comparado à classificação por métodos bayesianos, por exemplo.
 
-No problema de classificação de comentários tóxicos, basicamente a análise de sentimentos é utilizada para representar em quais classes de toxicidade a pertence. Formalmente, dada a sentenças, o objetivo da análise de sentimentos é extrair a seguinte sêxtupla:
+No problema a ser discutido nesse artigo, com base de dados referente a comentários tóxicos, temos basicamente a análise de sentimentos conforme as classes rotuladas no mesmo, sendo utilizada para representar em quais classes de toxicidade determinada sentneça pertence. Formalmente, o objetivo da análise de sentimentos é extrair a seguinte sêxtupla:
 
 \[
 (a\lambda1, a\lambda2, a\lambda3, a\lambda4, a\lambda5, a\lambda6)
 \]
 
-Onde $a \lambda i$ se refere a probabilidade de cada classe, que respectivamente representam: Toxico; Muito Toxico; Obsceno; Ameaça; Insulto; Ódio de Identidade.
+Onde $a \lambda i$ se refere a probabilidade de cada classe, que respectivamente representam: Tóxico; Muito Tóxico; Obsceno; Ameaça; Insulto; Ódio de Identidade.
 
-A análise de sentimentos é determinada comumente de maneira binária (positiva e negativa), porém abordagens multiclasse também são possíveis. Em uma abordagem multiclasse determinado comentário pode possuir diversos rótulos simultaneamente. Nesse artigo exploraremos tal abordagem e utilizaremos redes neurais recorrentes em conjunto com estruturas celulares específicas, como células recorrentes bloqueadas \cite{DBLP:journals/corr/PascanuGCB13} e células de longa memória de curto termo \cite{sep:97}. Abordaremos técnicas de transferência de aprendizado e construção de modelos de linguagem.
+A análise de sentimentos é determinada comumente de maneira binária (positiva e negativa), porém abordagens multiclasse também são possíveis. Em uma abordagem multiclasse determinado comentário pode possuir diversos rótulos simultaneamente. Para definir a ativação de determinada classe, é definido um limiar. Tal limiar só é válido devido a função de ativação utilizada como saída na rede.
 
 A utilização de redes neurais artificiais voltou a popularizar-se no reconhecimento de padrões em imagens devido a evolução de hardware, tais métodos de aprendizagem de máquina combinados ao processamento de linguagens naturais, permitem a avaliação automática de padrões e extração de conhecimento de bases de texto. A identificação de comentários ofensivos em textos é um derivado do caso geral de análise de sentimentos, na era da internet, identificar e classificar sentenças permite tomada de decisões e maior controle e filtragem de conteúdo. 
 
+Esse trabalho tem como principal interesse, o estudo e experimento de técnicas de aprendizagem profunda aplicada à área de processamento de linguagens naturais. Abordagens de aprendizagem de máquina tradicionais necessitam de intervenção humana para definição de características, existe a possibilidade de delegar tal tarefa à algoritmos simples de extração de características línguisticas ou sintáticas disponíveis na literatura, como utilizando contagem, ou processamento esparso. A tarefa realizada utilizando métodos clássicos, por fim utilizam algum método superficial de aprendizado, como por exemplo, máquinas de vetores de suporte \cite{DBLP:journals/ml/CortesV95}, naive bayes e naive bayes SVM \cite{wang:2012}.
+
+Embora os métodos descritos anteriormente já tenham sido validados, o foco desse trabalho é utilizar um método automátizado de extração de características que seja eficaz. Para a análise de sentimentos em comentários e classificação de toxicidade, utilizaremos utilizaremos redes neurais recorrentes em conjunto com estruturas celulares específicas, como células recorrentes bloqueadas \cite{DBLP:journals/corr/PascanuGCB13} e células de longa memória de curto termo \cite{sep:97}. Abordaremos técnicas de transferência de aprendizado e construção de modelos de linguagem.
+A estrutura recorrente é uma variação da rede neural clássica para aceitar entradas com tamanhos e saídas arbitrários, possuindo também registro de contexto em relação a posição do elemento em seu conjunto de entrada. Redes recorrentes comuns não são efetivas devido a problemas de esquecimento de aprendizado ou pouca capacidade de aprendizado devido a limitação imposta pela quantidade de parâmetros. Para resolver essa situação existem diferentes células que podem ser incorporadas nas arquiteturas, como por exemplo células recorrentes bloqueadas e células de longa memória de curto termo.
+
+
 \section{Trabalho Relacionado} \label{sec:relacionado}
 
-A análise de sentimentos está sob grande aprimoramento devido a aplicação de redes recorrentes \cite{karpathy:2015}, redes convolucionais \cite{lecun:98} e transferência de aprendizado \cite{DBLP:journals/corr/abs-1801-06146}. Antes dessa abordagem, tal tarefa era realizada através de métodos utilizando contagem, ou extração de características processadas de maneira esparsa, para classificação utilizando algum método superficial de aprendizado, como por exemplo, máquinas de vetores de suporte \cite{DBLP:journals/ml/CortesV95}, naive bayes e naive bayes SVM \cite{wang:2012}.
+A análise de sentimentos está sob grande aprimoramento devido a aplicação de redes recorrentes \cite{karpathy:2015}, redes convolucionais \cite{lecun:98} e transferência de aprendizado \cite{DBLP:journals/corr/abs-1801-06146}.
 
 O principal problema do método superficial citado acima, é que ele não é capaz de identificar o contexto de palavras, não sendo uma opção robusta para classificação.
 
@@ -142,11 +148,11 @@ Produz um resultado entre 1 e -1, e é usada na estrutura de células simples de
 
 Infelizmente ainda não existe um consenso sobre qual é o melhor algoritmo de otimização. Schaul et al. (2014) apresentou uma comparação valiosa com um grande número de algoritmos de otimização através de uma ampla variedade de tarefas de otimização. Enquanto os resultados sugeriam que a família de algoritmos com taxa de aprendizado adaptativa (como RMSProp e AdaDelta) apresentavam desempenho robusto, não houve um único algoritmo que emergiu sobre os outros.
 
-Atualmente, os algoritmos de otimização mais populares são Gradiente Descendente Estocástico, Gradiente Descendente Estocástico com Momento, RMSProp, RMSProp com Momento, AdaDelta e Adam. A escolha de qual algoritmo de otimização usar, parece depender mais na familiaridade do desenvolvedor com o com o algoritmo (para afinar os hiperparametros mais facilmente) \cite{Goodfellow-et-al-2016}.
+Atualmente, os algoritmos de otimização mais utilizados na literatura são Gradiente Descendente Estocástico, Gradiente Descendente Estocástico com Momento, RMSProp, RMSProp com Momento, AdaDelta e Adam. A escolha de qual algoritmo de otimização usar, parece depender mais na familiaridade do desenvolvedor com o com o algoritmo (para afinar os hiperparametros mais facilmente) \cite{Goodfellow-et-al-2016}.
 
 \subsubsection{Otimizador Adam}
 
-Com a utilização de minibatches, o progresso no gradiente tende a oscilar, logo o aprendizado pela rede se torna lento. Várias soluções foram propostas para solucionar esse problema, e a mais popular é uma junção das anteriores. O otimizador Adam \cite{DBLP:journals/corr/KingmaB14} utiliza a estimação do primeiro e do segundo momento dos gradientes.
+Com a utilização de minibatches, o progresso no gradiente tende a oscilar, logo o aprendizado pela rede se torna lento. Várias soluções foram propostas para solucionar esse problema, e a mais eficaz é uma junção das anteriores. O otimizador Adam \cite{DBLP:journals/corr/KingmaB14} utiliza a estimação do primeiro e do segundo momento dos gradientes.
 
 \subsection{Função de Custo}
 
@@ -251,7 +257,7 @@ Células de longa memória de curto termo são definidas pelas seguintes formula
 
 \subsection{Organização dos dados}
 
-O banco de dados utilizou da técnica de separação de treino e teste, onde 90\% dos dados foi atribuída para treino e 10\% para validação. Essa técnica é conhecida como train-test-split. Em abordagens clássicas de aprendizado de máquina, normalmente é utilizada a validação cruzada, porém, o mesmo demora . Como modelos de aprendizagem profunda possuem grande volume de dados, a abordagem mais popular em relação a desempenho e resultado é escolhida nesse trabalho.
+O banco de dados utilizou da técnica de separação de treino e teste, onde 90\% dos dados foi atribuída para treino e 10\% para validação. Não existe uma métrica fixa para a definição da quantidade a ser repartida, porém essa deve ser feita de acordo com a quantidade de dados rotulados. Como a validação segue apenas para verificar se não está acontecendo sobreajuste aos dados de treinamento, foi escolhido 10\% como dos hiperparametros. Essa técnica é conhecida como holdout. Em abordagens clássicas de aprendizado de máquina, normalmente é utilizada a validação cruzada, porém, em casos de aprendizagem profunda isso se torna inviável devido a quantidade de processamento. Como modelos de aprendizagem profunda possuem grande volume de dados, utilizaremos o holdout devido ao custo computacional.
 
 A segmentação a seguir representa como os dados foram separados:
 
@@ -262,11 +268,11 @@ A segmentação a seguir representa como os dados foram separados:
 \label{fig:datasplit}
 \end{figure}
 
-A segmentação de testes não está inclusa nos dados públicos. Tal teste é feita através de dados não divulgados na plataforma Kaggle.
+A segmentação de testes não está inclusa nos dados públicos. Tal teste é feita através de dados não rotulados na plataforma Kaggle. É possível realizar um submissão com os rotulos e obter a acurácia. Essa segmentação não é de acesso público para evitar que modelos sobreajustem seus parâmetros, assim o resultado retornado garante a validade de generalização do modelo.
 
 \subsection{Definição do modelo inicial}
 
-Um modelo inicial foi definido para obter o primeiro resultado e utilizar uma técnica bastante popular no segmento de aprendizagem profunda. A técnica de iteração, consiste na ideia de definir uma arquitetura inicial, e definir hiperparâmetros rapidamente. Como ponto de partida, foi utilizado uma arquitetura bastante popular e extremamente efetiva, sendo sem transferência de aprendizado, o estado da arte. A rede foi definida da seguinte forma:
+Um modelo inicial foi definido rapidamente para obter o primeiro resultado, a seguir utilizamos a técnica de iteração. A técnica de iteração, consiste na ideia de definir uma arquitetura inicial, e definir hiperparâmetros rapidamente. Como ponto de partida, foi utilizado uma arquitetura bastante popular e extremamente efetiva, sendo sem transferência de aprendizado, o estado da arte. A rede foi definida da seguinte forma:
 
 \begin{figure}[ht]
 \centering
@@ -293,7 +299,7 @@ Os hiperparâmetros do otimizar foram definidos através dos valores indicados n
 
 \section{Análises Preliminares}
 
-Em primeira instância os modelos foram bastante satisfatórios, alcançando acurácia próxima à melhor submissão deste problema.
+Em primeira instância os modelos obtiveram resultados satisfatórios, alcançando acurácia próxima à melhor submissão deste problema.
 
 QUADRO
 
