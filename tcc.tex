@@ -47,7 +47,7 @@
 
 \section{Introdução} \label{sec:introducao}
 
-Discutir assuntos na internet pode ser difícil. Ameaças, ofensas pessoais, e assédio, podem criar um ambiente tóxico dentro de fóruns e redes sociais, e até afastar usuários. As plataformas lutam para combater efetivamente discussões tóxicas e limitar ou desligar usuários com essas práticas, porém essa é uma tarefa de difícil automação exigindo grande quantidade de dados e métodos capazes de analisar de maneira eficaz o contexto e significado de sentenças.
+Discutir assuntos na internet pode ser difícil. Ameaças, ofensas pessoais, e assédio, podem criar um ambiente tóxico dentro de fóruns e redes sociais, e até afastar usuários. As plataformas lutam para combater efetivamente discussões tóxicas e limitar ou desligar usuários com essas práticas, porém essa é uma tarefa de difícil automação exigindo \hl{grande quantidade} de dados e métodos capazes de analisar de maneira eficaz o contexto e significado de sentenças.
 
 Recentemente, em resposta ao crescimento do uso de redes sociais, comentários são publicados massivamente. Como a escrita compõe grande parte de todos os dados gerados pela humanidade, que até então, apenas serviam para consultas, hoje servem como base de dados para o desenvolvimento de sistemas de processamento de linguagens naturais. Aplicando técnicas de aprendizagem profunda e processamento de linguagens naturais podemos automatizar processos análise e classificação de textos com uma boa taxa de acerto, comparado à classificação por métodos bayesianos, por exemplo.
 
@@ -63,10 +63,10 @@ A análise de sentimentos é determinada comumente de maneira binária (positiva
 
 A utilização de redes neurais artificiais voltou a popularizar-se no reconhecimento de padrões em imagens devido a evolução de hardware, tais métodos de aprendizagem de máquina combinados ao processamento de linguagens naturais, permitem a avaliação automática de padrões e extração de conhecimento de bases de texto. A identificação de comentários ofensivos em textos é um derivado do caso geral de análise de sentimentos, na era da internet, identificar e classificar sentenças permite tomada de decisões e maior controle e filtragem de conteúdo. 
 
-Esse trabalho tem como principal interesse, o estudo e experimento de técnicas de aprendizagem profunda aplicada à área de processamento de linguagens naturais. Abordagens de aprendizagem de máquina tradicionais necessitam de intervenção humana para definição de características, existe a possibilidade de delegar tal tarefa à algoritmos simples de extração de características línguisticas ou sintáticas disponíveis na literatura, como utilizando contagem, ou processamento esparso. A tarefa realizada utilizando métodos clássicos, por fim utilizam algum método superficial de aprendizado, como por exemplo, máquinas de vetores de suporte \cite{DBLP:journals/ml/CortesV95}, naive bayes e naive bayes SVM \cite{wang:2012}.
+Esse trabalho tem como principal interesse, o estudo e experimento de técnicas de aprendizagem profunda (\textit{deep learning}) aplicada à área de processamento de linguagens naturais. Abordagens de aprendizagem de máquina tradicionais necessitam de intervenção humana para definição de características, existe a possibilidade de delegar tal tarefa à algoritmos simples de extração de características línguisticas ou sintáticas disponíveis na literatura, como utilizando contagem, ou processamento esparso. A tarefa realizada utilizando métodos clássicos, por fim utilizam algum método superficial de aprendizado, como por exemplo, máquinas de vetores de suporte \cite{DBLP:journals/ml/CortesV95}, naive bayes e naive bayes SVM \cite{wang:2012}.
 
-Embora os métodos descritos anteriormente já tenham sido validados, o foco desse trabalho é utilizar um método automátizado de extração de características que seja eficaz. Para a análise de sentimentos em comentários e classificação de toxicidade, utilizaremos utilizaremos redes neurais recorrentes em conjunto com estruturas celulares específicas, como células recorrentes bloqueadas \cite{DBLP:journals/corr/PascanuGCB13} e células de longa memória de curto termo \cite{sep:97}. Abordaremos técnicas de transferência de aprendizado e construção de modelos de linguagem.
-A estrutura recorrente é uma variação da rede neural clássica para aceitar entradas com tamanhos e saídas arbitrários, possuindo também registro de contexto em relação a posição do elemento em seu conjunto de entrada. Redes recorrentes comuns não são efetivas devido a problemas de esquecimento de aprendizado ou pouca capacidade de aprendizado devido a limitação imposta pela quantidade de parâmetros. Para resolver essa situação existem diferentes células que podem ser incorporadas nas arquiteturas, como por exemplo células recorrentes bloqueadas e células de longa memória de curto termo.
+Embora os métodos descritos anteriormente já tenham sido validados, o foco desse trabalho é utilizar um método automátizado de extração de características que seja eficaz. Para a análise de sentimentos em comentários e classificação de toxicidade, utilizaremos utilizaremos redes neurais recorrentes em conjunto com estruturas celulares específicas, como células recorrentes bloqueadas (\textit{gated recurrent units}) \cite{DBLP:journals/corr/PascanuGCB13} e células de longa memória de curto termo (\textit{long-short term memory}) \cite{sep:97}. Abordaremos técnicas de transferência de aprendizado e construção de modelos de linguagem.
+A estrutura recorrente é uma variação da rede neural clássica para aceitar entradas com tamanhos e saídas arbitrários, possuindo também registro de contexto em relação a posição do elemento em seu conjunto de entrada. Redes recorrentes comuns não são efetivas devido a problemas de esquecimento de aprendizado ou pouca capacidade de aprendizado devido a limitação imposta pela quantidade de parâmetros. Para resolver essa situação existem diferentes células que podem ser incorporadas nas arquiteturas, como por exemplo células recorrentes bloqueadas (\textit{gated recurrent units}) e células de longa memória de curto termo (\textit{long-short term memory}).
 
 
 \section{Trabalho Relacionado} \label{sec:relacionado}
@@ -121,7 +121,7 @@ A imagem abaixo descreve a curva sigmoidal em um intervalo de 5 a –5.
 
 Aplicando essa função no output de uma transformação linear, teremos como resultado um valor entre 0 e 1.
 
-Além de a função sigmoide ser utilizada na estrutura de células de longa memória de curto termo e células recorrentes bloqueadas, também pode ser usada na saída do modelo. Poderíamos por exemplo, na classificação de sentimentos em texto, considerar valores próximos de 0 um sentimento negativo, e próximos de 1, positivo. Os valores maiores iguais a 0.5 serão classificados como positivos, enquanto 0.5 serão classificados como negativos.
+Além de a função sigmoide ser utilizada na estrutura de células de longa memória de curto termo (\textit{long-short term memory}) e células recorrentes bloqueadas (\textit{gated recurrent units}), também pode ser usada na saída do modelo. Poderíamos por exemplo, na classificação de sentimentos em texto, considerar valores próximos de 0 um sentimento negativo, e próximos de 1, positivo. Os valores maiores iguais a 0.5 serão classificados como positivos, enquanto 0.5 serão classificados como negativos.
 
 \subsubsection{Tangente Hiperbólica}
 
@@ -140,7 +140,7 @@ A imagem abaixo descreve a curva da tangente hiperbolica em um intervalo de 5 a 
 \label{fig:tanh}
 \end{figure}
 
-Produz um resultado entre 1 e -1, e é usada na estrutura de células simples de redes recorrentes, células de longa memória de curto termo e células recorrentes bloqueada. Em comparação a função de ativação sigmoide, possui a vantagem de ser simétrica em relação ao eixo x.
+Produz um resultado entre 1 e -1, e é usada na estrutura de células simples de redes recorrentes, células de longa memória de curto termo (\textit{long-short term memory}) e células recorrentes bloqueadas (\textit{gated recurrent units}). Em comparação a função de ativação sigmoide, possui a vantagem de ser simétrica em relação ao eixo x.
 
 \subsection{Otimizadores}
 
@@ -203,7 +203,7 @@ Word embedding é o nome coletivo de um conjunto de técnicas de modelagem de li
 \end{figure}
 
 \subsubsection{(GRU)}
-Células recorrentes bloqueadas são definidas pelas seguintes formulas:
+células recorrentes bloqueadas (\textit{gated recurrent units}) são definidas pelas seguintes formulas:
 
 \begin{equation}
     Ç<t> = tanh(Wc[\Gamma_r * c<t-1>, x<t>]+b_c)
@@ -227,7 +227,7 @@ Células recorrentes bloqueadas são definidas pelas seguintes formulas:
 
 \subsubsection{Longa memória de curto termo (LSTM)}
 
-Células de longa memória de curto termo são definidas pelas seguintes formulas:
+células de longa memória de curto termo (\textit{long-short term memory}) são definidas pelas seguintes formulas:
 
 \begin{equation}
     Ç<t> = tanh(Wc[a<t-1>, x<t>]+b_c)
@@ -257,7 +257,7 @@ Células de longa memória de curto termo são definidas pelas seguintes formula
 
 \subsection{Organização dos dados}
 
-O banco de dados utilizou da técnica de separação de treino e teste, onde 90\% dos dados foi atribuída para treino e 10\% para validação. Não existe uma métrica fixa para a definição da quantidade a ser repartida, porém essa deve ser feita de acordo com a quantidade de dados rotulados. Como a validação segue apenas para verificar se não está acontecendo sobreajuste aos dados de treinamento, foi escolhido 10\% como dos hiperparametros. Essa técnica é conhecida como holdout. Em abordagens clássicas de aprendizado de máquina, normalmente é utilizada a validação cruzada, porém, em casos de aprendizagem profunda isso se torna inviável devido a quantidade de processamento. Como modelos de aprendizagem profunda possuem grande volume de dados, utilizaremos o holdout devido ao custo computacional.
+O banco de dados utilizou da técnica de separação de treino e teste, onde 90\% dos dados foi atribuída para treino e 10\% para validação. Não existe uma métrica fixa para a definição da quantidade a ser repartida, porém essa deve ser feita de acordo com a quantidade de dados rotulados. Como a validação segue apenas para verificar se não está acontecendo sobreajuste aos dados de treinamento, foi escolhido 10\% como dos hiperparametros. Essa técnica é conhecida como holdout. Em abordagens clássicas de aprendizado de máquina, normalmente é utilizada a validação cruzada, porém, em casos de aprendizagem profunda (\textit{deep learning}) isso se torna inviável devido a quantidade de processamento. Como modelos de aprendizagem profunda (\textit{deep learning}) possuem grande volume de dados, utilizaremos o holdout devido ao custo computacional.
 
 A segmentação a seguir representa como os dados foram separados:
 
