@@ -199,13 +199,53 @@ Word embedding é o nome coletivo de um conjunto de técnicas de modelagem de li
 \subsubsection{(GRU)}
 Células recorrentes bloqueadas são definidas pelas seguintes formulas:
 
-FORMULAS
+\begin{equation}
+    Ç<t> = tanh(Wc[\Gamma_r * c<t-1>, x<t>]+b_c)
+\end{equation}
+
+\begin{equation}
+    \Gamma_u = \sigma(W_u[c<t-1>, x<t>]+b_u)
+\end{equation}
+
+\begin{equation}
+    \Gamma_r = \sigma(W_r[c<t-1>, x<t>]+b_r)
+\end{equation}
+
+\begin{equation}
+    c<t>=\Gamma_u*Ç<t>+(1-\Gamma_u)*c<t-1)
+\end{equation}
+
+\begin{equation}
+    a<t>=c<t>
+\end{equation}
 
 \subsubsection{Longa memória de curto termo (LSTM)}
 
 Células de longa memória de curto termo são definidas pelas seguintes formulas:
 
-FORMULAS
+\begin{equation}
+    Ç<t> = tanh(Wc[a<t-1>, x<t>]+b_c)
+\end{equation}
+
+\begin{equation}
+    \Gamma_u = \sigma(W_u[c<t-1>, x<t>]+b_u)
+\end{equation}
+
+\begin{equation}
+    \Gamma_f = \sigma(W_f[c<t-1>, x<t>]+b_f)
+\end{equation}
+
+\begin{equation}
+    \Gamma_o = \sigma(W_o[c<t-1>, x<t>]+b_o)
+\end{equation}
+
+\begin{equation}
+    c<t>=\Gamma_u*Ç<t>+(\Gamma_f)*c<t-1)
+\end{equation}
+
+\begin{equation}
+    a<t>=\Gamma_o*c<t>
+\end{equation}
 
 \section{Metodologia}
 
