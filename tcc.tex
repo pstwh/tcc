@@ -48,7 +48,7 @@
 
 \section{Introdução} \label{sec:introducao}
 
-Discutir assuntos na internet pode ser difícil. Ameaças, ofensas pessoais, e assédio, podem criar um ambiente tóxico dentro de fóruns e redes sociais, e até afastar usuários. As plataformas lutam para combater efetivamente discussões tóxicas e limitar ou desligar usuários com essas práticas, porém essa é uma tarefa de difícil automação exigindo \textcolor{red}{grande quantidade} de dados e métodos capazes de analisar de maneira eficaz o contexto e significado de sentenças.
+Discutir assuntos na internet pode ser difícil. Ameaças, ofensas pessoais, e assédio, podem criar um ambiente tóxico dentro de fóruns e redes sociais, e até afastar usuários. As plataformas lutam para combater efetivamente discussões tóxicas e limitar ou desligar usuários com essas práticas, porém essa é uma tarefa de difícil automação exigindo milhares de sentenças rotuladas e métodos capazes de analisar de maneira eficaz o contexto e significado de sentenças.
 
 Recentemente, em resposta ao crescimento do uso de redes sociais, comentários são publicados massivamente. Como a escrita compõe grande parte de todos os dados gerados pela humanidade, que até então, apenas serviam para consultas, hoje servem como base de dados para o desenvolvimento de sistemas de processamento de linguagens naturais. Aplicando técnicas de aprendizagem profunda e processamento de linguagens naturais podemos automatizar processos análise e classificação de textos com uma boa taxa de acerto, comparado à classificação por métodos bayesianos, por exemplo.
 
@@ -184,7 +184,7 @@ Especificamente, dropout treina o conjunto consistindo através de sub-redes ger
 
 \subsection{Inicialização de parâmetros}
 
-Talvez a única propriedade conhecida com completa certeza é que parâmetros precisam "quebrar a simetria" entre as diferentes unidades. Se duas unidades internas com a mesma função de ativação, estão conectadas às mesmas entradas, então essas unidades devem ter diferentes parâmetros iniciais. Caso elas tenham os mesmos parâmetros iniciais então um algoritmo de aprendizado determinístico aplicado à um modelo e função de custo também determinísticos, irá conseguintemente atualizar essas duas unidades da mesma forma. Mesmo se o modelo ou o algoritmo de treino for capaz de usar aleatoriedade para computar diferentes atualizações para diferentes unidades (por exemplo, dropout), na maioria das vezes é melhor inicializar cada unidade para computar uma função diferente de todas as outras unidades. Isso pode ajudar a garantir que nenhum padrão de entrada seja perdido no espaço nulo da forward propagation e nenhum padrão de gradiente seja perdido no espaço nulo da back-propagation. O objetivo de ter cada unidade computando uma funçao diferente motiva a inicialização aleatória de parâmetros (Goodfellow et al. 2017).
+Talvez a única propriedade conhecida com completa certeza é que parâmetros precisam "quebrar a simetria" entre as diferentes unidades. Se duas unidades internas com a mesma função de ativação, estão conectadas às mesmas entradas, então essas unidades devem ter diferentes parâmetros iniciais. Caso elas tenham os mesmos parâmetros iniciais então um algoritmo de aprendizado determinístico aplicado à um modelo e função de custo também determinísticos, irá conseguintemente atualizar essas duas unidades da mesma forma. Mesmo se o modelo ou o algoritmo de treino for capaz de usar aleatoriedade para computar diferentes atualizações para diferentes unidades (por exemplo, dropout), na maioria das vezes é melhor inicializar cada unidade para computar uma função diferente de todas as outras unidades. Isso pode ajudar a garantir que nenhum padrão de entrada seja perdido no espaço nulo da forward propagation e nenhum padrão de gradiente seja perdido no espaço nulo da back-propagation. O objetivo de ter cada unidade computando uma funçao diferente motiva a inicialização aleatória de parâmetros \cite{Goodfellow-et-al-2016}.
 
 Comumente, estabelecemos constantes os valores dos biases escolhidos de maneira heurística, e inicializamos apenas os pesos aleatoriamente (Goodfellow et al. 2017).
 
@@ -277,7 +277,7 @@ A segmentação a seguir representa como os dados foram separados:
 
 A segmentação de testes não está inclusa nos dados públicos. Tal teste é feita através de dados não rotulados na plataforma Kaggle. É possível realizar um submissão com os rotulos e obter a acurácia. Essa segmentação não é de acesso público para evitar que modelos sobreajustem seus parâmetros, assim o resultado retornado garante a validade de generalização do modelo.
 
-\subsection{Definição do modelo inicial}
+\subsection{Arquiteturas propostas}
 
 Um modelo inicial foi definido rapidamente para obter o primeiro resultado, a seguir utilizamos a técnica de iteração. A técnica de iteração, consiste na ideia de definir uma arquitetura inicial, e definir hiperparâmetros rapidamente. Como ponto de partida, foi utilizado uma arquitetura bastante popular e extremamente efetiva, sendo sem transferência de aprendizado, o estado da arte. A rede foi definida da seguinte forma:
 
@@ -334,9 +334,7 @@ Análises utilizando modelos de linguagem e transferência de aprendizado ainda 
 
 \section{Considerações Finais}
 
-Os modelos testados apresentaram um resultado satisfatório, porém não melhor que o melhor resultado atual. Técnicas como transferência de aprendizado e modelo de linguagem não foram aplicadas. Há a possibilidade de reelaborar a célula que constrói a rede neural recorrente para atender melhor a este caso. Talvez a aplicação de uma rede de capsulas (Hilton et al. 2017) proporcionaria um resultado superior devido a não variação em translações, uma das características desta arquitetura. 
-
-\section{Referências Bibliográficas}
+Os modelos testados apresentaram um resultado satisfatório, porém não melhor que o melhor resultado atual. Técnicas como transferência de aprendizado e modelo de linguagem não foram aplicadas. Há a possibilidade de reelaborar a célula que constrói a rede neural recorrente para atender melhor a este caso. Talvez a aplicação de uma rede de capsulas \cite{DBLP:journals/corr/abs-1710-09829} proporcionaria um resultado superior devido a não variação em translações, uma das características desta arquitetura. 
 
 \bibliographystyle{templates/sbc}
 \bibliography{bibliography}
