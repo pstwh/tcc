@@ -3,6 +3,7 @@
 \usepackage{templates/sbc-template}
 
 \usepackage{graphicx,url}
+\usepackage{color}
 
 \usepackage[brazil]{babel}
 \usepackage[utf8]{inputenc}
@@ -47,11 +48,11 @@
 
 \section{Introdução} \label{sec:introducao}
 
-Discutir assuntos na internet pode ser difícil. Ameaças, ofensas pessoais, e assédio, podem criar um ambiente tóxico dentro de fóruns e redes sociais, e até afastar usuários. As plataformas lutam para combater efetivamente discussões tóxicas e limitar ou desligar usuários com essas práticas, porém essa é uma tarefa de difícil automação exigindo \hl{grande quantidade} de dados e métodos capazes de analisar de maneira eficaz o contexto e significado de sentenças.
+Discutir assuntos na internet pode ser difícil. Ameaças, ofensas pessoais, e assédio, podem criar um ambiente tóxico dentro de fóruns e redes sociais, e até afastar usuários. As plataformas lutam para combater efetivamente discussões tóxicas e limitar ou desligar usuários com essas práticas, porém essa é uma tarefa de difícil automação exigindo \textcolor{red}{grande quantidade} de dados e métodos capazes de analisar de maneira eficaz o contexto e significado de sentenças.
 
 Recentemente, em resposta ao crescimento do uso de redes sociais, comentários são publicados massivamente. Como a escrita compõe grande parte de todos os dados gerados pela humanidade, que até então, apenas serviam para consultas, hoje servem como base de dados para o desenvolvimento de sistemas de processamento de linguagens naturais. Aplicando técnicas de aprendizagem profunda e processamento de linguagens naturais podemos automatizar processos análise e classificação de textos com uma boa taxa de acerto, comparado à classificação por métodos bayesianos, por exemplo.
 
-No problema a ser discutido nesse artigo, com base de dados referente a comentários tóxicos, temos basicamente a análise de sentimentos conforme as classes rotuladas no mesmo, sendo utilizada para representar em quais classes de toxicidade determinada sentneça pertence. Formalmente, o objetivo da análise de sentimentos é extrair a seguinte sêxtupla:
+No problema a ser discutido nesse artigo, com base de dados referente a comentários tóxicos, temos basicamente a análise de sentimentos conforme as classes rotuladas no mesmo, sendo utilizada para representar em quais classes de toxicidade determinada sentneça pertence. Formalmente, o objetivo da análise de sentimentos nesse trabalho é extrair a seguinte sêxtupla:
 
 \[
 (a\lambda1, a\lambda2, a\lambda3, a\lambda4, a\lambda5, a\lambda6)
@@ -81,7 +82,7 @@ Transferência de aprendizado é uma técnica onde um modelo já treinado é rea
 
 \subsection{Funções de ativação}
 
-Funções de ativação não lineares, dão capacidades não lineares para redes neurais \cite{lecun:98}.
+Funções de ativação não lineares, dão capacidades não lineares para redes neurais \cite{lecun:98}. As funções de ativação nos permitem ir além de problemas linearmente separaveis.
 
 \subsubsection{ReLU - Rectified Linear Activation Function}
 
@@ -144,15 +145,15 @@ Produz um resultado entre 1 e -1, e é usada na estrutura de células simples de
 
 \subsection{Otimizadores}
 
-\subsubsection{Escolhendo o Algoritmo de Otimização}
+\subsubsection{Escolha do Algoritmo de Otimização}
 
-Infelizmente ainda não existe um consenso sobre qual é o melhor algoritmo de otimização. Schaul et al. (2014) apresentou uma comparação valiosa com um grande número de algoritmos de otimização através de uma ampla variedade de tarefas de otimização. Enquanto os resultados sugeriam que a família de algoritmos com taxa de aprendizado adaptativa (como RMSProp e AdaDelta) apresentavam desempenho robusto, não houve um único algoritmo que emergiu sobre os outros.
+Infelizmente ainda não existe um consenso sobre qual é o melhor algoritmo de otimização. Schaul et al. (2014) apresentou uma comparação valiosa com um grande número de algoritmos de otimização através de uma ampla variedade de tarefas de otimização. Enquanto os resultados sugeriam que a família de algoritmos com taxa de aprendizado adaptativa (como RMSProp e AdaDelta) apresentavam na maioria das tarefas desempenho superior aos outros métodos, porém, não houve um único algoritmo que emergiu sobre os outros.
 
 Atualmente, os algoritmos de otimização mais utilizados na literatura são Gradiente Descendente Estocástico, Gradiente Descendente Estocástico com Momento, RMSProp, RMSProp com Momento, AdaDelta e Adam. A escolha de qual algoritmo de otimização usar, parece depender mais na familiaridade do desenvolvedor com o com o algoritmo (para afinar os hiperparametros mais facilmente) \cite{Goodfellow-et-al-2016}.
 
 \subsubsection{Otimizador Adam}
 
-Com a utilização de minibatches, o progresso no gradiente tende a oscilar, logo o aprendizado pela rede se torna lento. Várias soluções foram propostas para solucionar esse problema, e a mais eficaz é uma junção das anteriores. O otimizador Adam \cite{DBLP:journals/corr/KingmaB14} utiliza a estimação do primeiro e do segundo momento dos gradientes.
+Com a utilização do método minibatches, cujo divide a base de dados em varios blocos chamados minibatches, o progresso no gradiente tende a oscilar, logo o aprendizado pela rede se torna lento. Várias soluções foram propostas para solucionar esse problema, e a mais eficaz é uma junção das anteriores. O otimizador Adam \cite{DBLP:journals/corr/KingmaB14} utiliza a estimação do primeiro e do segundo momento dos gradientes, e terá a função de otimizar a função de custo.
 
 \subsection{Função de Custo}
 
