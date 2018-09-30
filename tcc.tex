@@ -301,7 +301,24 @@ Os hiperparâmetros do otimizar foram definidos através dos valores indicados n
 
 Em primeira instância os modelos obtiveram resultados satisfatórios, alcançando acurácia próxima à melhor submissão deste problema.
 
-QUADRO
+\begin{table}[t]
+  \small
+  \centering
+  \renewcommand{\arraystretch}{1.15}
+  \begin{tabular}{llll}
+    \hline
+     Célula & Acurácia Treino & Acurácia Validação & Acurácia Teste \\
+    \hline
+    \multicolumn{4}{c}{Modelo monolítico} \\
+    \hline
+    GRU & 98,50\% & 98,33\% & 98,33\% \\
+    LSTM & 98,50\% & 97,81\% & 98,26\% \\
+    GRU Bidirecional & 98,55\% & 98,44\% & 98,30\% \\
+    \hline
+  \end{tabular}
+  \caption{Resultados Preliminares}
+  \label{tab:ptb}
+\end{table}
 
 Podemos observar que nesse conjunto de dados a bidirecionalidade não trás beneficios nestas instâncias. Outro fator de relevante é o desempenho do GRU ter sobresaido em relação a LSTM. O GRU é um modelo "simplificado" da LSTM tradicional.
 
