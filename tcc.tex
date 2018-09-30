@@ -87,6 +87,8 @@ Redes recorrentes e suas variações são aplicadas utilizando comumente matrize
 
 Transferência de aprendizado é uma técnica onde um modelo já treinado é reajustado para detectar padrões diferentes dos iniciais. Geralmente usado quando a base de dados disponível é menor do que a usada no modelo já treinado. Trabalhos recentes propõem a utilização de modelos de linguagem universais, que sofrerão afinação (fine tuning) para atender uma tarefa específica \cite{DBLP:journals/corr/abs-1801-06146} com a possibilidade de utilização de dados não supervisionados para gerar um aumento de performance (Radford et al. 2018). A utilização de dados não rotulados permite reduzir drasticamente a necessidade de exemplos rotulados. O estado da arte da maioria das tarefas na área de linguagens naturais está relacionado ao uso de transferência de aprendizado e aprendizado não supervisionado, que é um dos maiores desafios atualmente.
 
+\section{Redes Neurais} \label{sec:revisao}
+
 \subsection{Funções de ativação}
 
 Funções de ativação não lineares, dão capacidades não lineares para redes neurais \cite{lecun:98}. As funções de ativação nos permitem ir além de problemas linearmente separaveis.
@@ -224,7 +226,7 @@ O conjunto de dados utilizados nesse artigo se adequa a arquitetura muitos para 
 
 A imagem a seguir demonstra alguns casos de redes recorrentes possíveis:
 
-\subsubsection{(GRU)}
+\subsubsection{Células recorrentes bloqueadas (GRU)}
 células recorrentes bloqueadas (\textit{gated recurrent units}) são definidas pelas seguintes formulas:
 
 \begin{equation}
