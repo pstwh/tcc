@@ -194,6 +194,8 @@ Word embedding é o nome coletivo de um conjunto de técnicas de modelagem de li
 
 \subsection{Redes Neurais Recorrentes}
 
+Redes recorrentes possuem o mesmo conceito básico de redes neurais artificiais, com o objetivo de otimizar parâmetros para retornar uma saída coerente em relação a entrada e ao problema. O que faz as redes recorrentes serem especiais, é o fato de elas não possuirem a restrição de tamanho fixo de entrada ou saída \cite{karpathy:2015}.
+
 \begin{figure}[ht]
 \centering
 \includegraphics[width=1\textwidth]{images/rnn-effectiveness-examples.jpeg}
@@ -202,6 +204,10 @@ Word embedding é o nome coletivo de um conjunto de técnicas de modelagem de li
 }
 \label{fig:sigmoid}
 \end{figure}
+
+O conjunto de dados utilizados nesse artigo se adequa a arquitetura muitos para muitos, onde a entrada são as sequencias vetorizadas e tratadas através de \textit{word embeddings}) e a saída é um vetor de probabilidades das classes.
+
+A imagem a seguir demonstra alguns casos de redes recorrentes possíveis:
 
 \subsubsection{(GRU)}
 células recorrentes bloqueadas (\textit{gated recurrent units}) são definidas pelas seguintes formulas:
@@ -320,6 +326,7 @@ Em primeira instância os modelos obtiveram resultados satisfatórios, alcançan
   \caption{Resultados Preliminares}
   \label{tab:ptb}
 \end{table}
+
 
 Podemos observar que nesse conjunto de dados a bidirecionalidade não trás beneficios nestas instâncias. Outro fator de relevante é o desempenho do GRU ter sobresaido em relação a LSTM. O GRU é um modelo "simplificado" da LSTM tradicional.
 
