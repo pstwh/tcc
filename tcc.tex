@@ -202,7 +202,7 @@ Atualmente, os algoritmos de otimização mais utilizados na literatura são Gra
 
 \subsubsection{Otimizador Adam}
 
-Com a utilização do método minibatches, cujo divide a base de dados em varios blocos chamados minibatches, o progresso no gradiente tende a oscilar, logo o aprendizado pela rede se torna lento. Várias soluções foram propostas para solucionar esse problema, e a mais eficaz é uma junção das anteriores. O otimizador Adam \cite{DBLP:journals/corr/KingmaB14} utiliza a estimação do primeiro e do segundo momento dos gradientes, e terá a função de otimizar a função de custo.
+Com a utilização do método \textit{minibatches}, cujo divide a base de dados em varios blocos chamados \textit{minibatches}, o progresso no gradiente tende a oscilar, logo o aprendizado pela rede se torna lento. Várias soluções foram propostas para solucionar esse problema, e a mais eficaz é uma junção das anteriores. O otimizador Adam \cite{DBLP:journals/corr/KingmaB14} utiliza a estimação do primeiro e do segundo momento dos gradientes, e terá a função de otimizar a função de custo.
 
 \subsection{Função de Custo}
 
@@ -304,15 +304,20 @@ células de longa memória de curto termo (\textit{long-short term memory}) são
 
 Um modelo inicial foi definido rapidamente para obter o primeiro resultado, a seguir utilizamos a técnica de iteração. A técnica de iteração, consiste na ideia de definir uma arquitetura inicial, e definir hiperparâmetros rapidamente. Como ponto de partida, foi utilizado uma arquitetura bastante popular e extremamente efetiva, sendo sem transferência de aprendizado, o estado da arte.
 
-\subsection{Entrada de dados}
-
 \subsection{\textit{Word Embeddings}}
+
+A matrix para representação de palavras indica os elementos de entrada de cada sentença, esse provém da técnica de Word Embeddings, detalhada na seção 3.7. Nesse trabalho foram utilizados vetores pré-treinados GloVe \cite{pennington2014glove}, treinados em um \textit{crawler} com aproximadamente 840 bilhões de tokens.
 
 \subsubsection{\texit{Pooling}}
 
+Os \textit{Pooling} utilizados nas arquiteturas, são de máximo ou de média. A subamostragem dessas técnicas permitem reduzir a complexidade espacial, reduzindo o tamanho do tensor, sem diminuir o desempenho do modelo. Garante também uma pequena normalização, removendo ruído.
+
 \subsubsection{Célula}
 
-\subsubsection{\textit{Dropout}}
+As células utilizadas mudam o compartamento da rede neural recorrente, sendo que os casos utilizados nesse trabalho foram células recorrentes bloqueadas ou células de longa memória de curto termo, já definidas nas seções 3.7.1 e 3.7.2.
+
+\subsubsection{Predição}
+
 
 \subsection{Rede recorrente}
 
@@ -334,6 +339,7 @@ Um modelo inicial foi definido rapidamente para obter o primeiro resultado, a se
 
 \subsubsection{Convolução}
 
+\subsection{HI}
 
 
 Embedding se refere a essa codificação. Utilizamos o conceito de vetores globais para representação de palavras (\textit{GloVe}) pré-treinados em um crawler global.
