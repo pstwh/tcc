@@ -88,6 +88,13 @@ Redes recorrentes e suas variações são aplicadas utilizando comumente matrize
 Transferência de aprendizado é uma técnica onde um modelo já treinado é reajustado para detectar padrões diferentes dos iniciais. Geralmente usado quando a base de dados disponível é menor do que a usada no modelo já treinado. Trabalhos recentes propõem a utilização de modelos de linguagem universais, que sofrerão afinação (fine tuning) para atender uma tarefa específica \cite{DBLP:journals/corr/abs-1801-06146} com a possibilidade de utilização de dados não supervisionados para gerar um aumento de performance (Radford et al. 2018). A utilização de dados não rotulados permite reduzir drasticamente a necessidade de exemplos rotulados. O estado da arte da maioria das tarefas na área de linguagens naturais está relacionado ao uso de transferência de aprendizado e aprendizado não supervisionado, que é um dos maiores desafios atualmente.
 
 \section{Redes Neurais} \label{sec:revisao}
+\subsection{Redes Feedforward Profundas (\textit{deep feedforward networks})}
+
+Redes feedforward profundas, também chamadas de redes neurais feedforward, ou perceptrons multicamadas (\textit{multilayer perceptrons}), são essenciais nos modelos de aprendizagem profunda. O objetivo de uma rede feedforward é aproximar uma função $f$. Por exemplo, para um classificador, $y = f ∗ (x)$ mapeia uma entrada $x$ para uma categoria $y$. Uma rede feedforward define um mapeamento $y = f (x; θ)$ e aprende o valor dos parâmetros $θ$ que resultam na melhor aproximação da função.
+
+Esses modelos são chamados feedforward porque a informação flui através da função que está sendo avaliada de $x$, através dos cálculos intermediários usados ​​para definir $f$ e, finalmente, para a saída $y$. Não há conexões de retroalimentação nas quais as saídas do modelo são realimentadas. Quando redes neurais feedforward são estendidas para incluir conexões de retroalimentação, elas são chamadas de redes neurais recorrentes.
+
+As redes de feedforward são de extrema importância para os profissionais de aprendizado de máquina. Eles formam a base de muitas aplicações comerciais importantes. Por exemplo, as redes convolucionais usadas para reconhecimento de objetos em imagens são um tipo especializado de rede feedforward. As redes da Feedforward são um trampolim conceitual no caminho para redes recorrentes, que potencializam muitas aplicações de linguagem natural. \cite{Goodfellow-et-al-2016}.
 
 \subsection{Redes Neurais Recorrentes}
 
