@@ -88,7 +88,7 @@ Redes recorrentes e suas variações são aplicadas utilizando comumente matrize
 Transferência de aprendizado é uma técnica onde um modelo já treinado é reajustado para detectar padrões diferentes dos iniciais. Geralmente usado quando a base de dados disponível é menor do que a usada no modelo já treinado. Trabalhos recentes propõem a utilização de modelos de linguagem universais, que sofrerão afinação (fine tuning) para atender uma tarefa específica \cite{DBLP:journals/corr/abs-1801-06146} com a possibilidade de utilização de dados não supervisionados para gerar um aumento de performance (Radford et al. 2018). A utilização de dados não rotulados permite reduzir drasticamente a necessidade de exemplos rotulados. O estado da arte da maioria das tarefas na área de linguagens naturais está relacionado ao uso de transferência de aprendizado e aprendizado não supervisionado, que é um dos maiores desafios atualmente.
 
 \section{Redes Neurais} \label{sec:revisao}
-\subsection{Redes Feedforward Profundas (\textit{deep feedforward networks})}
+\subsection{Redes Artificiais Profundas (\textit{deep feedforward networks})}
 
 Redes feedforward profundas, também chamadas de redes neurais feedforward, ou perceptrons multicamadas (\textit{multilayer perceptrons}), são essenciais nos modelos de aprendizagem profunda. O objetivo de uma rede feedforward é aproximar uma função $f$. Por exemplo, para um classificador, $y = f ∗ (x)$ mapeia uma entrada $x$ para uma categoria $y$. Uma rede feedforward define um mapeamento $y = f (x; θ)$ e aprende o valor dos parâmetros $θ$ que resultam na melhor aproximação da função.
 
@@ -101,6 +101,7 @@ As redes de feedforward são de extrema importância para os profissionais de ap
 Redes recorrentes possuem o mesmo conceito básico de redes neurais artificiais, com o objetivo de otimizar parâmetros para retornar uma saída coerente em relação a entrada e ao problema. O que faz as redes recorrentes serem especiais, é o fato de elas não possuirem a restrição de tamanho fixo de entrada ou saída \cite{karpathy:2015}.
 
 O conjunto de dados utilizados nesse artigo se adequa a arquitetura muitos para muitos, onde a entrada são as sequencias vetorizadas e tratadas através de \textit{word embeddings}) e a saída é um vetor de probabilidades das classes.
+
 
 A imagem a seguir demonstra alguns casos de redes recorrentes possíveis:
 
@@ -274,6 +275,13 @@ células recorrentes bloqueadas (\textit{gated recurrent units}) são definidas 
 \end{equation}
 
 
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.3\textwidth]{images/gru_gate.png}
+\caption{Esquema representativo da célula recorrente bloqueada \cite{DBLP:journals/corr/ChungGCB14}}
+\label{fig:gru_gaet}
+\end{figure}
+
 \subsubsection{Longa memória de curto termo (LSTM)}
 
 células de longa memória de curto termo (\textit{long-short term memory}) são definidas pelas seguintes formulas:
@@ -301,6 +309,13 @@ células de longa memória de curto termo (\textit{long-short term memory}) são
 \begin{equation}
     a<t>=\Gamma_o*c<t>
 \end{equation}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.3\textwidth]{images/lstm_gate.png}
+\caption{Esquema representativo da célula de longa memória de curto termo \cite{DBLP:journals/corr/ChungGCB14}}
+\label{fig:lstm_date}
+\end{figure}
 
 \section{Arquiteturas Propostas}
 
@@ -362,11 +377,11 @@ Concatenção junta os tensores de saída dos poolings.
 
 Predição faz uma rede neural totalmente conectada e utiliza a função de ativação sigmoid, sendo que retornos maior que 0.5 serão considerados verdadeiros, e menores como falso.
 
-Os hiperparâmetros do otimizar foram definidos através dos valores indicados no artigo do mesmo. A taxa de aprendizado utiliza do processo de iteração, e o valor utilizado nas análises preliminares é arbitrário, sendo inicialmente 1x10-3. Os pesos das células foram inicializador através da inicialização Glorot (Bengio & Glorot, 2010).
+Os hiperparâmetros do otimizar foram definidos através dos valores padrões indicados \cite{DBLP:journals/corr/KingmaB14}. A taxa de aprendizado utiliza do processo de iteração, e o valor utilizado nas análises preliminares é arbitrário, sendo inicialmente 1x10-3. Os pesos das células foram inicializador através da inicialização Glorot \cite{glorot:10}).
 
 \subsection{Organização dos dados}
 
-O banco de dados utilizou da técnica de separação de treino e teste, onde 90\% dos dados foi atribuída para treino e 10\% para validação. Não existe uma métrica fixa para a definição da quantidade a ser repartida, porém essa deve ser feita de acordo com a quantidade de dados rotulados. Como a validação segue apenas para verificar se não está acontecendo sobreajuste aos dados de treinamento, foi escolhido 10\% como dos hiperparametros. Essa técnica é conhecida como holdout. Em abordagens clássicas de aprendizado de máquina, normalmente é utilizada a validação cruzada, porém, em casos de aprendizagem profunda (\textit{deep learning}) isso se torna inviável devido a quantidade de processamento. Como modelos de aprendizagem profunda (\textit{deep learning}) possuem grande volume de dados, utilizaremos o holdout devido ao custo computacional.
+O banco de dados utilizou da técnica de separação de treino e teste, onde 90\% dos dados foi atribuída para treino e 10\% para validação. Não existe uma métrica fixa para a definição da quantidade a ser repartida, porém essa deve ser feita de acordo com a quantidade de dados rotulados. Como a validação segue apenas para verificar se não está acontecendo sobreajuste aos dados de treinamento, foi escolhido 10\% como dos hiperparametros. Essa técnica é conhecida como holdout. Em abordagens clássicas de aprendizado de máquina, normalmente é utilizada a validação cruzada, porém, em casos de aprendizagem profunda (\textit{deep learning}) isso se torna inviável devido a quantidade de processamento, já que nesse tipo de validação é necessário treinar o modelo \textit{k} vezes, onde \textit{k} é um hiperparâmetro. Como modelos de aprendizagem profunda (\textit{deep learning}) possuem grande volume de dados, utilizaremos o holdout devido a viabilidade computacional.
 
 A segmentação a seguir representa como os dados foram separados:
 
