@@ -267,28 +267,35 @@ Word embedding é o nome coletivo de um conjunto de técnicas de modelagem de li
 
 \subsubsection{Células recorrentes bloqueadas (GRU)}
 
-células recorrentes bloqueadas (\textit{gated recurrent units}) são definidas pelas seguintes formulas:
+Células normais de redes recorrentes não conseguem absorver grande as principais características de sentenças e sofrem de problemas como o desaparecimento do gradiente, durante o treino. As células recorrentes bloqueadas (\textit{gated recurrent units}) apresentam uma solução para esse problema.
+
+São definidas pelas seguintes formulas:
 
 \begin{equation}
     Ç<t> = tanh(Wc[\Gamma_r * c<t-1>, x<t>]+b_c)
 \end{equation}
 
+A equação (8) se refere ao cálculo do valor de ativação que será inserido na próxima célula recorrente bloqueada.
+
 \begin{equation}
     \Gamma_u = \sigma(W_u[c<t-1>, x<t>]+b_u)
 \end{equation}
+
+A equação (9) se refere ao \textit{gate}, que dá nome a célula. É utilizado o valor da ativação da célula recorrente anterior e aplicada a função de ativação sigmoide, já detalhada na seção 3.3.2. A função sigmoide pode assumir apenas valores entre 0 e 1, sendo extremamente sensível aos valores de entrada. Logo essa operação tende a retornar valores ou muito próximos de 0 ou muito próximos de 1. Os resultados dirão quais elementos de \textit{c} serão atualizados por \textit{Ç}, ou seja, a saída de uma célula para outra, será apenas atualizada nos valores definidos por \Gamma_u.
+
+Essa característica da célula recorrente bloqueada permite a memorização de características da sentença, como por exemplo, plural, gênero contexto, etc...
 
 \begin{equation}
     \Gamma_r = \sigma(W_r[c<t-1>, x<t>]+b_r)
 \end{equation}
 
+A equação (10) se refere ao \textit{gate}, que define a relevância de \textit{c} na formação da ativação substituta \textit{Ç}.
+
 \begin{equation}
     c<t>=\Gamma_u*Ç<t>+(1-\Gamma_u)*c<t-1)
 \end{equation}
 
-\begin{equation}
-    a<t>=c<t>
-\end{equation}
-
+A equação (11) define a equação completa da célula recorrente bloqueada. É possível visualizar graficamente as equações descritas anteriormente através da figura (7).
 
 \begin{figure}[!htb]
 \centering
@@ -305,17 +312,29 @@ células de longa memória de curto termo (\textit{long-short term memory}) são
     Ç<t> = tanh(Wc[a<t-1>, x<t>]+b_c)
 \end{equation}
 
+A equação (12) é semelhante a equação (8) da célula recorrente bloqueada, porém não há o \textit{gate} referente a relevância da ativação anterior.
+
 \begin{equation}
     \Gamma_u = \sigma(W_u[c<t-1>, x<t>]+b_u)
 \end{equation}
+
+A equação (13) representa o \textit{gate} que será utilizado para limitar a ativação \textit{Ç} na equação (16). É responsável por selecionar características da célula atual.
 
 \begin{equation}
     \Gamma_f = \sigma(W_f[c<t-1>, x<t>]+b_f)
 \end{equation}
 
+A equação (14) representa o \textit{gate} que será utilizado para limitar a ativação \textit{c(t-1)} na equação (16).
+
+É responsável por selecionar características da célula anterior.
+
 \begin{equation}
     \Gamma_o = \sigma(W_o[c<t-1>, x<t>]+b_o)
 \end{equation}
+
+A equação (15) representa o \textit{gate} que será utilizado para limitar a ativação \textit{Ç} na equação (17).
+
+É responsável por limitar a ativação final.
 
 \begin{equation}
     c<t>=\Gamma_u*Ç<t>+(\Gamma_f)*c<t-1)
@@ -324,6 +343,8 @@ células de longa memória de curto termo (\textit{long-short term memory}) são
 \begin{equation}
     a<t>=\Gamma_o*c<t>
 \end{equation}
+
+A equação (17) define a equação completa da célula recorrente bloqueada. É possível visualizar graficamente as equações descritas anteriormente através da figura (8).
 
 \begin{figure}[!htb]
 \centering
@@ -423,6 +444,7 @@ Em primeira instância os modelos obtiveram resultados satisfatórios, alcançan
       \hline
     \hline
      Célula & Acurácia Treino & Acurácia Validação & Acurácia Teste \\
+    RNN & 97,99\% & 98,19\% & 97,38\% \\
     GRU & 98,32\% & 98,35\% & 98,09\% \\
     LSTM & 98,29\% & 98,41\% & 98,12\% \\
     GRU Bidirecional & 98,37\% & 98,38\% & 98,15\% \\
