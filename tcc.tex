@@ -219,7 +219,9 @@ Com a utilização do método \textit{minibatches}, cujo divide a base de dados 
 
 \subsection{Função de Custo}
 
-Um aspecto importante no desenvolvimento de redes neurais profundas é na escolha de função de custo. As funções de custo para redes neurais normalmente as mesmas de outros modelos paramétricos, assim como modelos lineares \cite{Goodfellow-et-al-2016}.
+Um aspecto importante no desenvolvimento de redes neurais profundas é na escolha de função de custo. \cite{Goodfellow-et-al-2016}. As funções de custo de maneira geral são mecanismos para calcular a diferença entre os resultados do modelo, e os resultados desejados.
+
+A escolha da função de custo foi baseada nos resultados alcançados no artigo de \cite{golik:2013}, onde são aplicadas e comparadas funções de custo em modelos de classificação, como, reconhecimento de fala e reconhecimento de caracteres.
 
 \subsubsection{Entropia Cruzada}
 
@@ -229,6 +231,7 @@ O cálculo do custo por entropia cruzada é dado pela seguinte formula:
     CE = -\sum\limits_{x} p(x)\log q(x)
 \end{equation}
 
+Onde $p(x)$ é o rótulo, e $q(x)$ o saída do modelo.
 \subsection{Regularização}
 
 Um problema central em aprendizado de máquina é como fazer um algoritmo que irá ter um bom desempenho não somente nos dados de treino, mas também em novos dados inseridos nele. Muitas estratégias usadas em aprendizado de máquina são explicitamente desenvolvidas para reduzir o erro no conjunto de teste, possivelmente à custa de um erro maior no conjunto de treino. Essas estratégias são conhecidas coletivamente como regularização \cite{Goodfellow-et-al-2016}.
