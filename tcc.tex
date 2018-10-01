@@ -38,11 +38,11 @@
 \maketitle
 
 \begin{abstract}
-  The article addresses the problem of multiclass sentiment analysis at the sentence level. Recurrent neural networks and their demonstrations have demonstrated successful modeling of sentiment classifiers and last generation in language modeling with the same demonstration demonstrating efficiency and performance in various tasks. The datasheet of the learned paper transfer, larger database, has proven effective in small databases. This work proposes the use ages between architecture in a with modeling of language to a classification of the sentiment in comment.
+  The article addresses the problem of multiclass sentiment analysis at the sentence level. Recurrent neural networks and their demonstrations have demonstrated successful modeling of feeling classifiers and last generation in language modeling with the same demonstration demonstrating efficiency and performance in various tasks. The datasheet of the learned paper transfer, larger database, has proven effective in small databases. In the paper we propose the use of combinations of architecture together with a combination of convolutional techniques.
 \end{abstract}
 
 \begin{resumo}
-  Este artigo aborda o problema da análise de sentimentos multiclasse no nível de sentença. Redes neurais recorrentes e suas variações demonstraram sucesso na modelagem de classificadores de sentimentos e recentemente a modelagem de linguagens através dessa arquitetura demonstrou-se eficaz atingindo o estado da arte em várias tarefas. O uso da técnica de transferência de aprendizado, proveniente de banco de dados maiores, se demonstrou eficiente em banco de dados pequenos. Nesse trabalho propomos o uso destas variações arquitetura em conjunto com a modelagem de linguagem para a classificação de sentimento em comentários.
+  Este artigo aborda o problema da análise de sentimentos multiclasse no nível de sentença. Redes neurais recorrentes e suas variações demonstraram sucesso na modelagem de classificadores de sentimentos e recentemente a modelagem de linguagens através dessa arquitetura demonstrou-se eficaz atingindo o estado da arte em várias tarefas. O uso da técnica de transferência de aprendizado, proveniente de banco de dados maiores, se demonstrou eficiente em banco de dados pequenos. Nesse trabalho propomos o uso destas variações arquitetura em conjunto com a combinação de técnicas convolucionais.
 \end{resumo}
 
 
@@ -297,6 +297,25 @@ células de longa memória de curto termo (\textit{long-short term memory}) são
 
 Um modelo inicial foi definido rapidamente para obter o primeiro resultado, a seguir utilizamos a técnica de iteração. A técnica de iteração, consiste na ideia de definir uma arquitetura inicial, e definir hiperparâmetros rapidamente. Como ponto de partida, foi utilizado uma arquitetura bastante popular e extremamente efetiva, sendo sem transferência de aprendizado, o estado da arte.
 
+\subsection{Entrada de dados}
+
+\subsection{\textit{Word Embeddings}}
+
+\subsubsection{\texit{Pooling}}
+
+\subsubsection{Célula}
+
+\subsubsection{\textit{Dropout}}
+
+\subsection{Rede recorrente}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.2\textwidth]{images/graph_2.png}
+\caption{Estrutura genérica de rede}
+\label{fig:graph_2}
+\end{figure}
+
 \subsection{Rede recorrente com convolução}
 
 \begin{figure}[ht]
@@ -306,17 +325,8 @@ Um modelo inicial foi definido rapidamente para obter o primeiro resultado, a se
 \label{fig:graph}
 \end{figure}
 
-\subsubsection{Entrada de dados}
-
-\subsubsection{\textit{Word Embeddings}}
-
-\subsubsection{\textit{Dropout}}
-
-\subsubsection{Célula}
-
 \subsubsection{Convolução}
 
-\subsubsection{\texit{Pooling}}
 
 
 Embedding se refere a essa codificação. Utilizamos o conceito de vetores globais para representação de palavras (\textit{GloVe}) pré-treinados em um crawler global.
