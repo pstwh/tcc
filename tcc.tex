@@ -89,6 +89,23 @@ Transferência de aprendizado é uma técnica onde um modelo já treinado é rea
 
 \section{Redes Neurais} \label{sec:revisao}
 
+\subsection{Redes Neurais Recorrentes}
+
+Redes recorrentes possuem o mesmo conceito básico de redes neurais artificiais, com o objetivo de otimizar parâmetros para retornar uma saída coerente em relação a entrada e ao problema. O que faz as redes recorrentes serem especiais, é o fato de elas não possuirem a restrição de tamanho fixo de entrada ou saída \cite{karpathy:2015}.
+
+O conjunto de dados utilizados nesse artigo se adequa a arquitetura muitos para muitos, onde a entrada são as sequencias vetorizadas e tratadas através de \textit{word embeddings}) e a saída é um vetor de probabilidades das classes.
+
+A imagem a seguir demonstra alguns casos de redes recorrentes possíveis:
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{images/rnn-effectiveness-examples.jpeg}
+\caption{
+    Possibilidades de entrada de saída em redes reccorentes. \cite{karpathy:2015}
+}
+\label{fig:sigmoid}
+\end{figure}
+
 \subsection{Funções de ativação}
 
 Funções de ativação não lineares, dão capacidades não lineares para redes neurais \cite{lecun:98}. As funções de ativação nos permitem ir além de problemas linearmente separáveis. Caso essas funções não sejam adicionadas, o modelo apenas terá a capacidade de resolver problemas simples, sendo que todas as camadas formarão apenas um modelo linear.
@@ -225,23 +242,6 @@ Word embedding é o nome coletivo de um conjunto de técnicas de modelagem de li
   \label{}
 \end{figure}
 
-\subsection{Redes Neurais Recorrentes}
-
-Redes recorrentes possuem o mesmo conceito básico de redes neurais artificiais, com o objetivo de otimizar parâmetros para retornar uma saída coerente em relação a entrada e ao problema. O que faz as redes recorrentes serem especiais, é o fato de elas não possuirem a restrição de tamanho fixo de entrada ou saída \cite{karpathy:2015}.
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=1\textwidth]{images/rnn-effectiveness-examples.jpeg}
-\caption{
-    Possibilidades de entrada de saída em redes reccorentes. \cite{karpathy:2015}
-}
-\label{fig:sigmoid}
-\end{figure}
-
-O conjunto de dados utilizados nesse artigo se adequa a arquitetura muitos para muitos, onde a entrada são as sequencias vetorizadas e tratadas através de \textit{word embeddings}) e a saída é um vetor de probabilidades das classes.
-
-A imagem a seguir demonstra alguns casos de redes recorrentes possíveis:
-
 \subsubsection{Células recorrentes bloqueadas (GRU)}
 células recorrentes bloqueadas (\textit{gated recurrent units}) são definidas pelas seguintes formulas:
 
@@ -293,7 +293,47 @@ células de longa memória de curto termo (\textit{long-short term memory}) são
     a<t>=\Gamma_o*c<t>
 \end{equation}
 
-\section{Metodologia}
+\section{Arquiteturas Propostas}
+
+Um modelo inicial foi definido rapidamente para obter o primeiro resultado, a seguir utilizamos a técnica de iteração. A técnica de iteração, consiste na ideia de definir uma arquitetura inicial, e definir hiperparâmetros rapidamente. Como ponto de partida, foi utilizado uma arquitetura bastante popular e extremamente efetiva, sendo sem transferência de aprendizado, o estado da arte.
+
+\subsection{Rede recorrente com convolução}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.5\textwidth]{images/graph.png}
+\caption{Estrutura genérica de rede}
+\label{fig:graph}
+\end{figure}
+
+\subsubsection{Entrada de dados}
+
+\subsubsection{\textit{Word Embeddings}}
+
+\subsubsection{\textit{Dropout}}
+
+\subsubsection{Célula}
+
+\subsubsection{Convolução}
+
+\subsubsection{\texit{Pooling}}
+
+
+Embedding se refere a essa codificação. Utilizamos o conceito de vetores globais para representação de palavras (\textit{GloVe}) pré-treinados em um crawler global.
+
+Dropout previne o encaixe exagerado da função aos dados, logo faz o modelo generalizar melhor.
+
+Célula define qual componente interno da rede neural recorrente será utilizado. Nessa arquitetura utilizamos variações entre 128 e 256 nós.
+
+Convolução utiliza uma janela deslizante unidimensional com um filtro de tamanho três. Busca encontrar características e padrões.
+
+Pooling diminuem tamanho da saída da convolução.
+
+Concatenção junta os tensores de saída dos poolings.
+
+Predição faz uma rede neural totalmente conectada e utiliza a função de ativação sigmoid, sendo que retornos maior que 0.5 serão considerados verdadeiros, e menores como falso.
+
+Os hiperparâmetros do otimizar foram definidos através dos valores indicados no artigo do mesmo. A taxa de aprendizado utiliza do processo de iteração, e o valor utilizado nas análises preliminares é arbitrário, sendo inicialmente 1x10-3. Os pesos das células foram inicializador através da inicialização Glorot (Bengio & Glorot, 2010).
 
 \subsection{Organização dos dados}
 
@@ -309,33 +349,6 @@ A segmentação a seguir representa como os dados foram separados:
 \end{figure}
 
 A segmentação de testes não está inclusa nos dados públicos. Tal teste é feita através de dados não rotulados na plataforma Kaggle. É possível realizar um submissão com os rotulos e obter a acurácia. Essa segmentação não é de acesso público para evitar que modelos sobreajustem seus parâmetros, assim o resultado retornado garante a validade de generalização do modelo.
-
-\subsection{Arquiteturas propostas}
-
-Um modelo inicial foi definido rapidamente para obter o primeiro resultado, a seguir utilizamos a técnica de iteração. A técnica de iteração, consiste na ideia de definir uma arquitetura inicial, e definir hiperparâmetros rapidamente. Como ponto de partida, foi utilizado uma arquitetura bastante popular e extremamente efetiva, sendo sem transferência de aprendizado, o estado da arte. A rede foi definida da seguinte forma:
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=.5\textwidth]{images/graph.png}
-\caption{Estrutura genérica de rede}
-\label{fig:graph}
-\end{figure}
-
-Embedding se refere a essa codificação. Utilizamos o conceito de vetores globais para representação de palavras (GloVe) pré-treinados em um crawler global.
-
-Dropout previne o encaixe exagerado da função aos dados, logo faz o modelo generalizar melhor.
-
-Célula define qual componente interno da rede neural recorrente será utilizado. Nessa arquitetura utilizamos variações entre 128 e 256 nós.
-
-Convolução utiliza uma janela deslizante unidimensional com um filtro de tamanho três. Busca encontrar características e padrões.
-
-Pooling diminuem tamanho da saída da convolução.
-
-Concatenção junta os tensores de saída dos poolings.
-
-Predição faz uma rede neural totalmente conectada e utiliza a função de ativação sigmoid, sendo que retornos maior que 0.5 serão considerados verdadeiros, e menores como falso.
-
-Os hiperparâmetros do otimizar foram definidos através dos valores indicados no artigo do mesmo. A taxa de aprendizado utiliza do processo de iteração, e o valor utilizado nas análises preliminares é arbitrário, sendo inicialmente 1x10-3. Os pesos das células foram inicializador através da inicialização Glorot (Bengio & Glorot, 2010).
 
 \section{Análises Preliminares}
 
@@ -365,9 +378,9 @@ Podemos observar que nesse conjunto de dados a bidirecionalidade não trás bene
 
 Análises utilizando modelos de linguagem e transferência de aprendizado ainda estão sendo desenvolvidas.
 
-\section{Considerações Finais}
+\section{Considerações Finais e Trabalhos Futuros}
 
-Os modelos testados apresentaram um resultado satisfatório, porém não melhor que o melhor resultado atual. Técnicas como transferência de aprendizado e modelo de linguagem não foram aplicadas. Há a possibilidade de reelaborar a célula que constrói a rede neural recorrente para atender melhor a este caso. Talvez a aplicação de uma rede de capsulas \cite{DBLP:journals/corr/abs-1710-09829} proporcionaria um resultado superior devido a não variação em translações, uma das características desta arquitetura. 
+A comparação dos modelos testados demonstra como a combinação de modelos recorrentes e camadas convolucionais melhoram a acurácia. Técnicas como transferência de aprendizado em modelos de linguagem não foram aplicadas nesse trabalho, porém há ambição de aplica-los em trabalhos futuros. Há a possibilidade de reelaborar a célula que constrói a rede neural recorrente para atender melhor a este caso. Talvez a aplicação de uma rede de capsulas \cite{DBLP:journals/corr/abs-1710-09829} proporcionaria um resultado superior devido a não variação em translações, que é uma das características desta arquitetura. Existe a ambição de aplicar conceitos presentes nesse trabalho em outras base de dados, com ajuda de aprendizagem semi-supervisionada e transferência de aprendizado.
 
 \bibliographystyle{templates/sbc}
 \bibliography{bibliography}
