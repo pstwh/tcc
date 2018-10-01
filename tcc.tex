@@ -79,7 +79,7 @@ Nesse trabalho as arquiteturas utilizadas aspiram utilizar os diversos conceitos
 
 A análise de sentimentos está sob grande aprimoramento devido a aplicação de redes recorrentes \cite{karpathy:2015}, redes convolucionais \cite{lecun:98} e transferência de aprendizado \cite{DBLP:journals/corr/abs-1801-06146}. Esses casos descritos anteriormente se referem ao estado da arte dessa atividade.
 
-Métodos clássicos de aprendizagem de máquina aplicados a análise e classificação de sentimento, como por exemplo \textit{Suport Vector Machines} \cite{DBLP:journals/ml/CortesV95}, apresentam resultados inferiores ao estado da arte. Essa abordagem necessida que as características sejam extraídas de maneira não automátizada, com ajuda de análise humanada, ou utilizando segmentações pouco eficientes, como por exemplo contagem de palavras e transformações esparsas.
+Métodos clássicos de aprendizagem de máquina aplicados a análise e classificação de sentimento, como por exemplo \textit{Suport Vector Machines} \cite{DBLP:journals/ml/CortesV95}, apresentam resultados inferiores ao estado da arte. Essa abordagem necessita que as características sejam extraídas de maneira não automátizada, com ajuda de análise humanada, ou utilizando segmentações pouco eficientes, como por exemplo contagem de palavras e transformações esparsas.
 
 O principal problema do método superficial citado acima, é que ele não é capaz de identificar o contexto de palavras, não sendo uma opção robusta para classificação.
 
@@ -92,9 +92,9 @@ Transferência de aprendizado é uma técnica onde um modelo já treinado é rea
 
 Redes feedforward profundas, também chamadas de redes neurais feedforward, ou perceptrons multicamadas (\textit{multilayer perceptrons}), são essenciais nos modelos de aprendizagem profunda. O objetivo de uma rede feedforward é aproximar uma função $f$. Por exemplo, para um classificador, $y = f ∗ (x)$ mapeia uma entrada $x$ para uma categoria $y$. Uma rede feedforward define um mapeamento $y = f (x; θ)$ e aprende o valor dos parâmetros $θ$ que resultam na melhor aproximação da função.
 
-Esses modelos são chamados feedforward porque a informação flui através da função que está sendo avaliada de $x$, através dos cálculos intermediários usados ​​para definir $f$ e, finalmente, para a saída $y$. Não há conexões de retroalimentação nas quais as saídas do modelo são realimentadas. Quando redes neurais feedforward são estendidas para incluir conexões de retroalimentação, elas são chamadas de redes neurais recorrentes.
+Esses modelos são chamados \textit{feedforward} porque a informação flui através da função que está sendo avaliada de $x$, através dos cálculos intermediários usados ​​para definir $f$ e, finalmente, para a saída $y$. Não há conexões de retroalimentação nas quais as saídas do modelo são realimentadas. Quando redes neurais feedforward são estendidas para incluir conexões de retroalimentação, elas são chamadas de redes neurais recorrentes.
 
-As redes de feedforward são de extrema importância para os profissionais de aprendizado de máquina. Eles formam a base de muitas aplicações comerciais importantes. Por exemplo, as redes convolucionais usadas para reconhecimento de objetos em imagens são um tipo especializado de rede feedforward. As redes da Feedforward são um trampolim conceitual no caminho para redes recorrentes, que potencializam muitas aplicações de linguagem natural. \cite{Goodfellow-et-al-2016}.
+As redes \texit{feedforward} são de extrema importância para os profissionais de aprendizado de máquina. Eles formam a base de muitas aplicações comerciais importantes. Por exemplo, as redes convolucionais usadas para reconhecimento de objetos em imagens são um tipo especializado de rede feedforward. As redes da Feedforward são um trampolim conceitual no caminho para redes recorrentes, que potencializam muitas aplicações de linguagem natural. \cite{Goodfellow-et-al-2016}.
 
 \subsection{Redes Neurais Recorrentes}
 
@@ -102,6 +102,15 @@ Redes recorrentes possuem o mesmo conceito básico de redes neurais artificiais,
 
 O conjunto de dados utilizados nesse artigo se adequa a arquitetura muitos para muitos, onde a entrada são as sequencias vetorizadas e tratadas através de \textit{word embeddings}) e a saída é um vetor de probabilidades das classes.
 
+O modelo muitos para muitos nesse conjunto de dados, possuirá a entrada onde cada bloco terá o número de \textit{minibatches} de matrizes de \textit{word embeddings} para cada palavra.
+
+A saída se comportará como representado anteriormente, sendo a sêxtupla:
+
+\[
+(a\lambda1, a\lambda2, a\lambda3, a\lambda4, a\lambda5, a\lambda6)
+\]
+
+Onde $a \lambda i$ se refere a probabilidade de cada classe, que respectivamente representam: Tóxico; Muito Tóxico; Obsceno; Ameaça; Insulto; Ódio de Identidade.
 
 A imagem a seguir demonstra alguns casos de redes recorrentes possíveis:
 
@@ -193,13 +202,13 @@ A imagem abaixo descreve a curva da tangente hiperbolica em um intervalo de 5 a 
 
 Produz um resultado entre 1 e -1, e é usada na estrutura de células simples de redes recorrentes, células de longa memória de curto termo (\textit{long-short term memory}) e células recorrentes bloqueadas (\textit{gated recurrent units}). Em comparação a função de ativação sigmoide, possui a vantagem de ser simétrica em relação ao eixo x.
 
-\subsection{Otimizadores}
+\subsection{Algoritmos de treinamento/Otimizadores}
 
 \subsubsection{Escolha do Algoritmo de Otimização}
 
-Infelizmente ainda não existe um consenso sobre qual é o melhor algoritmo de otimização. Schaul et al. (2014) apresentou uma comparação valiosa com um grande número de algoritmos de otimização através de uma ampla variedade de tarefas de otimização. Enquanto os resultados sugeriam que a família de algoritmos com taxa de aprendizado adaptativa (como RMSProp e AdaDelta) apresentavam na maioria das tarefas desempenho superior aos outros métodos, porém, não houve um único algoritmo que emergiu sobre os outros.
+Infelizmente ainda não existe um consenso sobre qual é o melhor algoritmo de otimização. \cite{DBLP:journals/corr/SchaulAS13} apresentou uma comparação valiosa com um grande número de algoritmos de otimização através de uma ampla variedade de tarefas. Enquanto os resultados sugeriam que a família de algoritmos com taxa de aprendizado adaptativa (como RMSProp e AdaDelta \cite{DBLP:journals/corr/abs-1212-5701}) apresentavam na maioria das tarefas desempenho superior aos outros métodos, porém, não houve um único algoritmo que emergiu sobre os outros.
 
-Atualmente, os algoritmos de otimização mais utilizados na literatura são Gradiente Descendente Estocástico, Gradiente Descendente Estocástico com Momento, RMSProp, RMSProp com Momento, AdaDelta e Adam. A escolha de qual algoritmo de otimização usar, parece depender mais na familiaridade do desenvolvedor com o com o algoritmo (para afinar os hiperparametros mais facilmente) \cite{Goodfellow-et-al-2016}.
+Atualmente, os algoritmos de otimização mais utilizados na literatura são Gradiente Descendente Estocástico, Gradiente Descendente Estocástico com Momento, RMSProp, RMSProp com Momento, AdaDelta \cite{DBLP:journals/corr/Ruder16} e Adam \cite{DBLP:journals/corr/KingmaB14}. A escolha de qual algoritmo de otimização usar, parece depender mais na familiaridade do desenvolvedor com o com o algoritmo (para afinar os hiperparametros mais facilmente) \cite{Goodfellow-et-al-2016}.
 
 \subsubsection{Otimizador Adam}
 
@@ -207,7 +216,7 @@ Com a utilização do método \textit{minibatches}, cujo divide a base de dados 
 
 \subsection{Função de Custo}
 
-Um aspecto importante no desenvolvimento de redes neurais profundas é na escolha de função de custo. Felizmente, as funções de custo para redes neurais são mais ou menos as mesmas da de outros modelos paramétricos, assim como modelos lineares \cite{Goodfellow-et-al-2016}.
+Um aspecto importante no desenvolvimento de redes neurais profundas é na escolha de função de custo. As funções de custo para redes neurais normalmente as mesmas de outros modelos paramétricos, assim como modelos lineares \cite{Goodfellow-et-al-2016}.
 
 \subsubsection{Entropia Cruzada}
 
@@ -221,9 +230,9 @@ O cálculo do custo por entropia cruzada é dado pela seguinte formula:
 
 Um problema central em aprendizado de máquina é como fazer um algoritmo que irá ter um bom desempenho não somente nos dados de treino, mas também em novos dados inseridos nele. Muitas estratégias usadas em aprendizado de máquina são explicitamente desenvolvidas para reduzir o erro no conjunto de teste, possivelmente à custa de um erro maior no conjunto de treino. Essas estratégias são conhecidas coletivamente como regularização \cite{Goodfellow-et-al-2016}.
 
-O Dropout oferece pouco custo computacional, porém um método poderoso para regularização de uma ampla família de modelos (Srivastava et al. 2014).
+O Dropout oferece pouco custo computacional, porém um método poderoso para regularização de uma ampla família de modelos \cite{DBLP:journals/corr/abs-1207-0580}.
 
-Especificamente, dropout treina o conjunto consistindo através de sub-redes geradas pela remoção de unidades que fazem parte das camadas intermediarias ou de entrada como ilustra a figura abaixo: \cite{Goodfellow-et-al-2016}.
+Especificamente, dropout treina o conjunto consistindo através de sub-redes geradas pela remoção de unidades que fazem parte das camadas intermediarias ou de entrada, removendo uma proporção \textit{d} de neurônios temporariamente com base em um atributo \textit{p}, que indica a probabilidade. A remoção de neurônios pode desbalancear o aprendizado, logo o mesmo é normalizado para a quantidade de neurônios remanescente. A figura abaixo ilustra a técnica de dropout: \cite{Goodfellow-et-al-2016}.
 
 \begin{figure}[!htb]
 \centering
@@ -277,7 +286,7 @@ células recorrentes bloqueadas (\textit{gated recurrent units}) são definidas 
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=0.3\textwidth]{images/gru_gate.png}
+\includegraphics[width=0.4\textwidth]{images/gru_gate.png}
 \caption{Esquema representativo da célula recorrente bloqueada \cite{DBLP:journals/corr/ChungGCB14}}
 \label{fig:gru_gaet}
 \end{figure}
@@ -312,7 +321,7 @@ células de longa memória de curto termo (\textit{long-short term memory}) são
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=0.3\textwidth]{images/lstm_gate.png}
+\includegraphics[width=0.4\textwidth]{images/lstm_gate.png}
 \caption{Esquema representativo da célula de longa memória de curto termo \cite{DBLP:journals/corr/ChungGCB14}}
 \label{fig:lstm_date}
 \end{figure}
@@ -335,6 +344,7 @@ As células utilizadas mudam o compartamento da rede neural recorrente, sendo qu
 
 \subsubsection{Predição}
 
+Predição faz uma rede neural totalmente conectada e utiliza a função de ativação sigmoide, já descrita na seção 3.3.2,  sendo que retornos maiores iguais a 0.5 serão considerados verdadeiros, e menores como falso.
 
 \subsection{Rede recorrente}
 
@@ -406,11 +416,16 @@ Em primeira instância os modelos obtiveram resultados satisfatórios, alcançan
     \hline
      Célula & Acurácia Treino & Acurácia Validação & Acurácia Teste \\
     \hline
-    \multicolumn{4}{c}{Modelo monolítico} \\
+    \multicolumn{4}{c}{Modelo monolítico, treinado por 5 épocas} \\
     \hline
-    GRU & 98,50\% & 98,33\% & 98,33\% \\
-    LSTM & 98,50\% & 97,81\% & 98,26\% \\
-    GRU Bidirecional & 98,55\% & 98,44\% & 98,30\% \\
+    GRU & 98,32\% & 98,35\% & 98,09\% \\
+    LSTM & 98,29\% & 98,41\% & 98,12\% \\
+    GRU Bidirecional & 98,37\% & 98,38\% & 98,15\% \\
+    LSTM Bidirecional & 98,37\% & 98,40\% & 98,22\% \\
+    GRU + Convolução & 98,37\% & 98,31\% & 98,22\% \\
+    LSTM + Convolução & 98,35\% & 98,42\% & \textbf{98,25}\% \\
+    GRU Bidirecional + Convolução & \textbf{98,41}\% & 98,44\% & 98,18\% \\
+    LSTM Bidirecional + Convolução & \textbf{98,41}\% & \textbf{98,48}\% & 98,15\% \\
     \hline
   \end{tabular}
   \caption{Resultados Preliminares}
