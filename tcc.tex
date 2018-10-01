@@ -160,7 +160,10 @@ A imagem abaixo descreve expressão da ReLU em um intervalo de 5 a –5.
 \label{fig:relu}
 \end{figure}
 
-É a função de otimização padrão recomendada para uso na maioria das redes neurais. Aplicando essa função no output de uma transformação linear produz uma transformação não linear. A função permanece muito próxima de ser linear, contudo, no sentido de que é uma função linear por partes com duas peças lineares. Como as unidades lineares retificadas são quase lineares, elas preservam as propriedades que tornam os modelos lineares fáceis de otimizar com métodos baseados em gradiente. Eles também preservam muitas das propriedades que fazem modelos lineares generalizarem sistemas a partir de componentes mínimos \cite{Goodfellow-et-al-2016}.
+É a função de otimização padrão recomendada para uso na maioria das redes neurais. Aplicando essa função no output de uma transformação linear produz uma transformação não linear \cite{nair2010rectified}.
+
+A função permanece muito próxima de ser linear, contudo, no sentido de que é uma função linear por partes com duas peças lineares. Como as unidades lineares retificadas são quase lineares, elas preservam as propriedades que tornam os modelos lineares fáceis de otimizar com métodos baseados em gradiente. Eles também preservam muitas das propriedades que fazem modelos lineares generalizarem sistemas a partir de componentes mínimos \cite{Goodfellow-et-al-2016}.
+
 
 \subsubsection{Sigmoide}
 
@@ -353,7 +356,7 @@ Arquitetura base utilizada:
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=.2\textwidth]{images/graph_2.png}
-\caption{Estrutura genérica de rede}
+\caption{Rede recorrente simples}
 \label{fig:graph_2}
 \end{figure}
 
@@ -364,30 +367,26 @@ Arquitetura base utilizada:
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=.5\textwidth]{images/graph.png}
-\caption{Estrutura genérica de rede}
+\caption{Rede recorrente com convolução}
 \label{fig:graph}
 \end{figure}
 
 \subsubsection{Convolução}
 
-\subsection{Hiper}
+\subsection{Hiper-parâmetros}
 
+Embora a arquitetura do modelo contenha grande parte da informação sobre nossos modelos (seção 4.2 e 4.3), ainda é necessário definir alguns hiper-parâmetros que farão o comportamento de treino e arquitetura de nossa rede recorrente.
 
-Embedding se refere a essa codificação. Utilizamos o conceito de vetores globais para representação de palavras (\textit{GloVe}) pré-treinados em um crawler global.
+\begin{itemize}
+  \item Durante a formação de matriz de \textit{embeddings} é possível definir a quantidade de parâmetros que cada palavra armazenará, foi escolhida de maneira arbitrária o valor de 300, que é compatível com matrizes já treinadas como por exemplo o GloVe \cite{pennington2014glove}\\
+  \item O número de nós na rede recorrente não possui uma métrica de escolha, foi escolhido com base no método iterativo, o valor de 256 nós.\\
+  \item Regularização: Para evitar sobreajuste foi utilizada a técnica de \textit{dropout} com probabilidade \textit{p} de remover um nó de 0.5.\\
+  \item O tamanho do \textit{minibatch} escolhido foi 128, esse valor se restringe ao tamanho da memória da placa gráfica utilizada para treino. Logo esse valor provou-se ideal em nosso hardware.\\
+  \item O número de épocas escolhido para treinamento foi cinco, devido a limitação de hardware e quantidade de modelos a serem treinados, esse número demonstrou-se suficiente para garantir a convergência do modelo e evitar o ajuste exagerado, garantindo generalização.\\
+  \item A taxa de aprendizado durante cada adição do gradiente por \textit{minibatch} foi escolhida arbitrariamente e de maneira iterativa, obtendo-seo valor de 1e-3.
+\end{itemize}
 
-Dropout previne o encaixe exagerado da função aos dados, logo faz o modelo generalizar melhor.
-
-Célula define qual componente interno da rede neural recorrente será utilizado. Nessa arquitetura utilizamos variações entre 128 e 256 nós.
-
-Convolução utiliza uma janela deslizante unidimensional com um filtro de tamanho três. Busca encontrar características e padrões.
-
-Pooling diminuem tamanho da saída da convolução.
-
-Concatenção junta os tensores de saída dos poolings.
-
-Predição faz uma rede neural totalmente conectada e utiliza a função de ativação sigmoid, sendo que retornos maior que 0.5 serão considerados verdadeiros, e menores como falso.
-
-Os hiperparâmetros do otimizar foram definidos através dos valores padrões indicados \cite{DBLP:journals/corr/KingmaB14}. A taxa de aprendizado utiliza do processo de iteração, e o valor utilizado nas análises preliminares é arbitrário, sendo inicialmente 1x10-3. Os pesos das células foram inicializador através da inicialização Glorot \cite{glorot:10}).
+Os hiperparâmetros do otimizadorr foram definidos através dos valores padrões indicados \cite{DBLP:journals/corr/KingmaB14}. A taxa de aprendizado utiliza do processo de iteração, e o valor utilizado nas análises preliminares é arbitrário, sendo inicialmente 1x10-3. Os pesos das células foram inicializador através da inicialização Glorot \cite{glorot:10}).
 
 \subsection{Organização dos dados}
 
@@ -441,7 +440,11 @@ O repositório com códigos fontes de todos os modelos analisados está disponí
 
 \section{Considerações Finais e Trabalhos Futuros}
 
-A comparação dos modelos testados demonstra como a combinação de modelos recorrentes e camadas convolucionais melhoram a acurácia. Técnicas como transferência de aprendizado em modelos de linguagem não foram aplicadas nesse trabalho, porém há ambição de aplica-los em trabalhos futuros. Há a possibilidade de reelaborar a célula que constrói a rede neural recorrente para atender melhor a este caso. Talvez a aplicação de uma rede de capsulas \cite{DBLP:journals/corr/abs-1710-09829} proporcionaria um resultado superior devido a não variação em translações, que é uma das características desta arquitetura. Existe a ambição de aplicar conceitos presentes nesse trabalho em outras base de dados, com ajuda de aprendizagem semi-supervisionada e transferência de aprendizado.
+Nesse trabalho apresentamos métodos automátizados para análise de comentários tóxicos utilizando redes recorrentes e suas variações. O conjunto de dados utilizado foi adquirido da plataforma \textit{Kaggle}, onde foram tratados e processados com a utilização de \textit{word embeddings} provenientes da \textit{GloVe} \cite{pennington2014glove}.
+
+A comparação dos modelos testados demonstra como a combinação de modelos recorrentes e camadas convolucionais melhoram a acurácia. Técnicas como transferência de aprendizado em modelos de linguagem não foram aplicadas nesse trabalho, porém há ambição de aplica-los em trabalhos futuros. Há a possibilidade de reelaborar a célula que constrói a rede neural recorrente para atender melhor a este caso. Talvez a aplicação de uma rede de capsulas \cite{DBLP:journals/corr/abs-1710-09829} proporcionaria um resultado superior devido a não variação em translações, que é uma das características desta arquitetura.
+
+Existe a ambição em trabalhos futuros de aplicar conceitos presentes nesse artigo em outros conjuntos de dados, como por exemplo conjuntos de dados em português do brasil, com ajuda de aprendizagem semi-supervisionada e transferência de aprendizado.
 
 \bibliographystyle{templates/sbc}
 \bibliography{bibliography}
