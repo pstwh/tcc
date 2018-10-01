@@ -97,7 +97,7 @@ O conjunto de dados utilizados nesse artigo se adequa a arquitetura muitos para 
 
 A imagem a seguir demonstra alguns casos de redes recorrentes possíveis:
 
-\begin{figure}[ht]
+\begin{figure}[!htb]
 \centering
 \includegraphics[width=1\textwidth]{images/rnn-effectiveness-examples.jpeg}
 \caption{
@@ -136,7 +136,7 @@ Dada pela fórmula:
 
 A imagem abaixo descreve expressão da ReLU em um intervalo de 5 a –5.
 
-\begin{figure}[ht]
+\begin{figure}[!htb]
 \centering
 \includegraphics[width=.5\textwidth]{images/relu.png}
 \caption{Unidade Linear Retificada}
@@ -155,7 +155,7 @@ A função sigmoide é dada pela formula:
 
 A imagem abaixo descreve a curva sigmoidal em um intervalo de 5 a –5.
 
-\begin{figure}[ht]
+\begin{figure}[!htb]
 \centering
 \includegraphics[width=.5\textwidth]{images/sigmoid.png}
 \caption{Curva Sigmoidal}
@@ -176,7 +176,7 @@ Dada pela formula: 
 
 A imagem abaixo descreve a curva da tangente hiperbolica em um intervalo de 5 a -5.
 
-\begin{figure}[ht]
+\begin{figure}[!htb]
 \centering
 \includegraphics[width=.5\textwidth]{images/tanh.png}
 \caption{Curva Tangente Hiperbólica}
@@ -217,7 +217,7 @@ O Dropout oferece pouco custo computacional, porém um método poderoso para reg
 
 Especificamente, dropout treina o conjunto consistindo através de sub-redes geradas pela remoção de unidades que fazem parte das camadas intermediarias ou de entrada como ilustra a figura abaixo: \cite{Goodfellow-et-al-2016}.
 
-\begin{figure}[ht]
+\begin{figure}[!htb]
 \centering
 \includegraphics[width=.8\textwidth]{images/dropout.png}
 \caption{Dropout}
@@ -243,6 +243,7 @@ Word embedding é o nome coletivo de um conjunto de técnicas de modelagem de li
 \end{figure}
 
 \subsubsection{Células recorrentes bloqueadas (GRU)}
+
 células recorrentes bloqueadas (\textit{gated recurrent units}) são definidas pelas seguintes formulas:
 
 \begin{equation}
@@ -264,6 +265,7 @@ células recorrentes bloqueadas (\textit{gated recurrent units}) são definidas 
 \begin{equation}
     a<t>=c<t>
 \end{equation}
+
 
 \subsubsection{Longa memória de curto termo (LSTM)}
 
@@ -314,7 +316,9 @@ As células utilizadas mudam o compartamento da rede neural recorrente, sendo qu
 
 \subsection{Rede recorrente}
 
-\begin{figure}[ht]
+Arquitetura base utilizada:
+
+\begin{figure}[!htb]
 \centering
 \includegraphics[width=.2\textwidth]{images/graph_2.png}
 \caption{Estrutura genérica de rede}
@@ -323,7 +327,9 @@ As células utilizadas mudam o compartamento da rede neural recorrente, sendo qu
 
 \subsection{Rede recorrente com convolução}
 
-\begin{figure}[ht]
+Arquitetura base utilizada:
+
+\begin{figure}[!htb]
 \centering
 \includegraphics[width=.5\textwidth]{images/graph.png}
 \caption{Estrutura genérica de rede}
@@ -332,7 +338,7 @@ As células utilizadas mudam o compartamento da rede neural recorrente, sendo qu
 
 \subsubsection{Convolução}
 
-\subsection{HI}
+\subsection{Hiper}
 
 
 Embedding se refere a essa codificação. Utilizamos o conceito de vetores globais para representação de palavras (\textit{GloVe}) pré-treinados em um crawler global.
@@ -357,7 +363,7 @@ O banco de dados utilizou da técnica de separação de treino e teste, onde 90\
 
 A segmentação a seguir representa como os dados foram separados:
 
-\begin{figure}[ht]
+\begin{figure}[!htb]
 \centering
 \includegraphics[width=1\textwidth]{images/datasplit.png}
 \caption{Separacão de dados}
