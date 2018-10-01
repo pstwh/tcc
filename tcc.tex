@@ -404,20 +404,20 @@ A segmentação a seguir representa como os dados foram separados:
 
 A segmentação de testes não está inclusa nos dados públicos. Tal teste é feita através de dados não rotulados na plataforma Kaggle. É possível realizar um submissão com os rotulos e obter a acurácia. Essa segmentação não é de acesso público para evitar que modelos sobreajustem seus parâmetros, assim o resultado retornado garante a validade de generalização do modelo.
 
-\section{Análises Preliminares}
+\section{Análises de resultados}
 
 Em primeira instância os modelos obtiveram resultados satisfatórios, alcançando acurácia próxima à melhor submissão deste problema.
 
-\begin{table}[t]
+\begin{table}[!htb]
   \small
   \centering
   \renewcommand{\arraystretch}{1.15}
   \begin{tabular}{llll}
+      \hline
+      \multicolumn{4}{c}{Modelo monolítico, treinado por 5 épocas} \\
+      \hline
     \hline
      Célula & Acurácia Treino & Acurácia Validação & Acurácia Teste \\
-    \hline
-    \multicolumn{4}{c}{Modelo monolítico, treinado por 5 épocas} \\
-    \hline
     GRU & 98,32\% & 98,35\% & 98,09\% \\
     LSTM & 98,29\% & 98,41\% & 98,12\% \\
     GRU Bidirecional & 98,37\% & 98,38\% & 98,15\% \\
@@ -428,14 +428,16 @@ Em primeira instância os modelos obtiveram resultados satisfatórios, alcançan
     LSTM Bidirecional + Convolução & \textbf{98,41}\% & \textbf{98,48}\% & 98,15\% \\
     \hline
   \end{tabular}
-  \caption{Resultados Preliminares}
+  \caption{Resultados}
   \label{tab:ptb}
 \end{table}
 
 
-Podemos observar que nesse conjunto de dados a bidirecionalidade não trás beneficios nestas instâncias. Outro fator de relevante é o desempenho do GRU ter sobresaido em relação a LSTM. O GRU é um modelo "simplificado" da LSTM tradicional.
+Podemos observar que nesse conjunto de dados a bidirecionalidade não trás beneficios nestas instâncias. A convolução trouxe ganhos em todos os casos sem bidirecionalidade. Ainda é possível analisar que os modelos bidirecionais e com convolução tiveram os melhores resultados no treino e validação, porém não se generalizaram no caso de teste, tal situação demonstra sobreajuste por parte desses modelos nos dados de treino e validação.
 
 Análises utilizando modelos de linguagem e transferência de aprendizado ainda estão sendo desenvolvidas.
+
+O repositório com códigos fontes de todos os modelos analisados está disponível no Github, através do endereço: \url{https://github.com/pstwh/toxic-comments-keras}. É recomendado a utilização de placa gráfica para reprodução desses artigos. As configurações utilizadas pelos autores para treinamento e validação dos modelos: Placa gráfica NVIDIA Quadro M4000, 30 Gb memória RAM e processador Intel® Xeon® E5-2623 v4 8 núcleos.
 
 \section{Considerações Finais e Trabalhos Futuros}
 
