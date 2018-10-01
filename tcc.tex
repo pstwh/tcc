@@ -255,7 +255,7 @@ Comumente, estabelecemos constantes os valores dos biases escolhidos de maneira 
 
 \subsection{Word Embeddings}
 
-Word embedding é o nome coletivo de um conjunto de técnicas de modelagem de linguagem e de aprendizado de recursos no processamento de linguagem natural, em que palavras ou frases do vocabulário são mapeadas para vetores de números reais. A figura 5 ilustra como funcionam esses vetores.
+Word embedding é o nome coletivo de um conjunto de técnicas de modelagem de linguagem e de aprendizado de recursos no processamento de linguagem natural, em que palavras ou frases do vocabulário são mapeadas para vetores de números reais. Com base na proximidade entre palavras é possível codificar-las em um conjunto de parâmetros que definam aproximadamente seu significado. Nesse espaço de palavras, é possível realizar operações, sendo que cada dimensão indica alguma característica pertencente a determinado elemento. A figura 5 ilustra como funcionam esses vetores.
 \begin{figure}
   \centering
   \includegraphics[width=1\textwidth]{images/wordembeddings.png}
@@ -331,6 +331,9 @@ células de longa memória de curto termo (\textit{long-short term memory}) são
 \caption{Esquema representativo da célula de longa memória de curto termo \cite{DBLP:journals/corr/ChungGCB14}}
 \label{fig:lstm_date}
 \end{figure}
+
+\subsection{Bidirecionalidade}
+    A bidirecionalidade em redes neurais recorrentes, é um conceito ao qual a adição de elementos é feito duas vezes por sentença, a primeira vez em ordem normal e a segunda em ordem contrária (descrito pelo autor de forma positiva e negativa). Com esse conceito é removida a limitação de prever apenas a janela futura. A principal contribuição da bidirecionalidade, é adquirir o contexto de palavras no início da sentença. \cite{schuster1997bidirectional}.
 
 \section{Arquiteturas Propostas}
 
