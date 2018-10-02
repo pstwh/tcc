@@ -221,7 +221,7 @@ Com a utilização do método \textit{minibatches}, cujo divide a base de dados 
 
 Um aspecto importante no desenvolvimento de redes neurais profundas é na escolha de função de custo. \cite{Goodfellow-et-al-2016}. As funções de custo de maneira geral são mecanismos para calcular a diferença entre os resultados do modelo, e os resultados desejados.
 
-A escolha da função de custo foi baseada nos resultados alcançados no artigo de \cite{golik:2013}, onde são aplicadas e comparadas funções de custo em modelos de classificação, como reconhecimento de fala e reconhecimento de caracteres.
+A escolha da função de custo foi baseada nos resultados alcançados em "Cross-Entropy vs. Squared Error Training: a Theoretical and Experimental Comparison" \cite{golik:2013}, onde são aplicadas e comparadas funções de custo em modelos de classificação, como reconhecimento de fala e reconhecimento de caracteres.
 
 \subsubsection{Entropia Cruzada}
 
@@ -251,11 +251,11 @@ Especificamente, dropout treina o conjunto consistindo através de sub-redes ger
 
 Talvez a única propriedade conhecida com completa certeza é que parâmetros precisam de um início aleatório entre as diferentes unidades. Se duas unidades internas com a mesma função de ativação, estão conectadas às mesmas entradas, então essas unidades devem ter diferentes parâmetros iniciais. Caso elas tenham os mesmos parâmetros iniciais então um algoritmo de aprendizado determinístico aplicado à um modelo e função de custo também determinísticos, irá conseguintemente atualizar essas duas unidades da mesma forma. Mesmo se o modelo ou o algoritmo de treino for capaz de usar aleatoriedade para computar diferentes atualizações para diferentes unidades (por exemplo, dropout), na maioria das vezes é melhor inicializar cada unidade para computar uma função diferente de todas as outras unidades. Isso pode ajudar a garantir que nenhum padrão de entrada seja perdido no espaço nulo da forward propagation e nenhum padrão de gradiente seja perdido no espaço nulo da back-propagation. O objetivo de ter cada unidade computando uma funçao diferente motiva a inicialização aleatória de parâmetros \cite{Goodfellow-et-al-2016}.
 
-Comumente, estabelecemos constantes os valores dos biases escolhidos de maneira heurística, e inicializamos apenas os pesos aleatoriamente (Goodfellow et al. 2017).
+Comumente, estabelecemos constantes os valores dos biases escolhidos de maneira heurística, e inicializamos apenas os pesos aleatoriamente [Goodfellow et al. 2017].
 
 \subsection{Word Embeddings}
 
-Word embedding é o nome coletivo de um conjunto de técnicas de modelagem de linguagem e de aprendizado de recursos no processamento de linguagem natural, em que palavras ou frases do vocabulário são mapeadas para vetores de números reais. Com base na proximidade entre palavras é possível codificar-las em um conjunto de parâmetros que definam aproximadamente seu significado. Nesse espaço de palavras, é possível realizar operações, sendo que cada dimensão indica alguma característica pertencente a determinado elemento. A figura 5 ilustra como funcionam esses vetores.
+Word embedding é o nome coletivo de um conjunto de técnicas de modelagem de linguagem e de aprendizado de recursos no processamento de linguagem natural, em que palavras ou frases do vocabulário são mapeadas para vetores de números reais. Com base na proximidade entre palavras é possível codificar-las em um conjunto de parâmetros que definam aproximadamente seu significado. Nesse espaço de palavras, é possível realizar operações, sendo que cada dimensão indica alguma característica pertencente a determinado elemento. A figura 6 ilustra como funcionam esses vetores.
 \begin{figure}
   \centering
   \includegraphics[width=1\textwidth]{images/wordembeddings.png}
@@ -366,7 +366,7 @@ A matrix para representação de palavras indica os elementos de entrada de cada
 
 \subsubsection{\texit{Pooling}}
 
-Além de convoluções discretas, as operações de \textit{pooling} são outro importante bloco de construção nas CNNs. Operações de \textit{pooling} reduzem o tamanho de mapas de características (\textit{feature maps}) usando alguma função para resumir sub-regiões, como a média ou o valor máximo. O agrupamento funciona deslizando uma janela pela entrada e alimentando o conteúdo da janela para uma função de pooling. De certa forma, o pooling funciona como uma convolução discreta, mas substitui a combinação linear descrita pelo kernel com alguma outra função. A figura 9 fornece um exemplo de pooling máximo (\textit{max pool}).
+As operações de \textit{pooling} são outro importante bloco de construção nas CNNs. Operações de \textit{pooling} reduzem o tamanho de mapas de características (\textit{feature maps}) usando alguma função para resumir sub-regiões, como a média ou o valor máximo. O agrupamento funciona deslizando uma janela pela entrada e alimentando o conteúdo da janela para uma função de pooling. De certa forma, o pooling funciona como uma convolução, mas substitui a combinação linear descrita pelo kernel com alguma outra função. A figura 9 fornece um exemplo de pooling máximo (\textit{max pool}) \cite{dumoulin2016guide}.
 
 \begin{figure}[!htb]
 \centering
@@ -407,13 +407,13 @@ Arquitetura base utilizada:
 
 \subsubsection{Convolução}
 
-Uma convolução discreta é uma transformação linear que preserva uma noção de área. É esparso (apenas algumas unidades de entrada contribuem para uma determinada saída) e reutiliza parâmetros (os mesmos pesos são aplicados a vários locais na entrada). A Figura 11 fornece um exemplo de uma convolução discreta. A grade azul claro é chamada de mapa de recursos (\textit{feature map}) de entrada. Para manter o desenho simples, uma única entrada mapa de recursos é representado, mas não é incomum ter vários recursos mapas empilhados um sobre o outro.
+Uma convolução discreta é uma transformação linear que preserva uma noção de área. É esparso (apenas algumas unidades de entrada contribuem para uma determinada saída) e reutiliza parâmetros (os mesmos pesos são aplicados a vários locais na entrada). A Figura 12 fornece um exemplo de uma convolução discreta. A grade azul claro é chamada de mapa de características (\textit{feature map}) de entrada. Para manter o desenho simples, uma única entrada de mapa de características é representado, mas não é incomum ter vários empilhados um sobre o outro.
 
-Um kernel (área sombreada) de valor desliza pelo mapa de recursos de entrada. Em cada local, o produto entre cada elemento do kernel e o elemento de entrada que ele sobrepõe é computado e os resultados são somados para obter a saída na localização atual. o procedimento pode ser repetido usando kernels diferentes para formar o recurso de saída mapas conforme desejado. Os resultados finais deste procedimento são chamados mapas de recursos de saída. \cite{dumoulin2016guide}
+Um kernel (área sombreada) desliza pelo mapa de características de entrada. Em cada local, o produto entre cada elemento do kernel e o elemento de entrada que ele sobrepõe é computado e os resultados são somados para obter a saída na localização atual. o procedimento pode ser repetido usando kernels diferentes para formar o recurso de saída mapas conforme desejado. Os resultados finais deste procedimento são chamados mapas de recursos de saída. \cite{dumoulin2016guide}
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=.5\textwidth]{images/convolutions.png}
+\includegraphics[width=.9\textwidth]{images/convolutions.png}
 \caption{Cálculo a saída de uma operação de convolução. \cite{dumoulin2016guide}}
 \label{fig:graph}
 \end{figure}
