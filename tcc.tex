@@ -366,7 +366,14 @@ A matrix para representação de palavras indica os elementos de entrada de cada
 
 \subsubsection{\texit{Pooling}}
 
-Os \textit{Pooling} utilizados nas arquiteturas, são de máximo ou de média. A subamostragem dessas técnicas permitem reduzir a complexidade espacial, reduzindo o tamanho do tensor, sem diminuir o desempenho do modelo. Garante também uma pequena normalização, removendo ruído.
+Além de convoluções discretas, as operações de \textit{pooling} são outro importante bloco de construção nas CNNs. Operações de \textit{pooling} reduzem o tamanho de mapas de características (\textit{feature maps}) usando alguma função para resumir sub-regiões, como a média ou o valor máximo. O agrupamento funciona deslizando uma janela pela entrada e alimentando o conteúdo da janela para uma função de pooling. De certa forma, o pooling funciona como uma convolução discreta, mas substitui a combinação linear descrita pelo kernel com alguma outra função. A figura 9 fornece um exemplo de pooling máximo (\textit{max pool}).
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=.9\textwidth]{images/pooling.png}
+\caption{Cálculo a saída de uma operação de pooling máximo. \cite{dumoulin2016guide}}
+\label{fig:graph}
+\end{figure}
 
 \subsubsection{Célula}
 
@@ -394,11 +401,22 @@ Arquitetura base utilizada:
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=.5\textwidth]{images/graph.png}
-\caption{Rede recorrente com convolução}
+\caption{Rede recorrente com convolução.}
 \label{fig:graph}
 \end{figure}
 
 \subsubsection{Convolução}
+
+Uma convolução discreta é uma transformação linear que preserva uma noção de área. É esparso (apenas algumas unidades de entrada contribuem para uma determinada saída) e reutiliza parâmetros (os mesmos pesos são aplicados a vários locais na entrada). A Figura 11 fornece um exemplo de uma convolução discreta. A grade azul claro é chamada de mapa de recursos (\textit{feature map}) de entrada. Para manter o desenho simples, uma única entrada mapa de recursos é representado, mas não é incomum ter vários recursos mapas empilhados um sobre o outro.
+
+Um kernel (área sombreada) de valor desliza pelo mapa de recursos de entrada. Em cada local, o produto entre cada elemento do kernel e o elemento de entrada que ele sobrepõe é computado e os resultados são somados para obter a saída na localização atual. o procedimento pode ser repetido usando kernels diferentes para formar o recurso de saída mapas conforme desejado. Os resultados finais deste procedimento são chamados mapas de recursos de saída. \cite{dumoulin2016guide}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=.5\textwidth]{images/convolutions.png}
+\caption{Cálculo a saída de uma operação de convolução. \cite{dumoulin2016guide}}
+\label{fig:graph}
+\end{figure}
 
 \subsection{Hiper-parâmetros}
 
