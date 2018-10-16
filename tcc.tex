@@ -59,7 +59,7 @@ No problema a ser discutido nesse artigo, com base de dados referente a comentá
 (a\lambda1, a\lambda2, a\lambda3, a\lambda4, a\lambda5, a\lambda6)
 \]
 
-Onde $a \lambda i$ se refere a probabilidade de cada classe, que respectivamente representam: Tóxico; Muito Tóxico; Obsceno; Ameaça; Insulto; Ódio de Identidade.
+Onde $a \lambda i$ se refere a probabilidade de cada classe, que respectivamente representam: Tóxico; Muito Tóxico; Obsceno; Ameaça; Insulto; Ódio de Identidade. O conjunto de dados utilizado para treinar esse modelo foi obtido através da plataforma Kaggle, já previamente rotulado conforme as classes descritas anteriormente.
 
 A análise de sentimentos é determinada comumente de maneira binária (positiva e negativa), porém abordagens multiclasse também são possíveis. Em uma abordagem multiclasse determinado comentário pode possuir diversos rótulos simultaneamente. Para definir a ativação de determinada classe, é definido um limiar. Tal limiar só é válido devido a função de ativação utilizada como saída na rede.
 
@@ -75,6 +75,8 @@ As redes neurais recorrentes possuem como característica a capacidade de trabal
 A adição de convoluções, também podem ser utilizadas, para melhorar a detecção de padrões nas saídas de redes recorrentes. As redes convolucionais normalmente são utilizadas para extração de características em imagens \cite{lecun:98} ou quando as dimensões estão extremamente relacionadas. No caso imagens, são utilizadas convoluções de duas dimensões, no caso de vídeo ou objetos tridimensionais, três dimensões. Nesse artigo será avaliado o desempenho de convoluções de uma dimensão buscando o relacionamento dessas saídas.
 
 Nesse trabalho as arquiteturas utilizadas aspiram utilizar os diversos conceitos disponíveis em busca de uma solução melhor que o aprendizado de máquina clássico e conceitos individuais. Na seção 2 é descrito brevemente trabalhos relacionados na área, tanto em aprendizado de máquina clássico, quanto aprendizado de máquina profundo. Na seção 3 revisaremos os principais conceitos para o entendimento da seção 4, que se refere as arquiteturas utilizadas nesse artigo. Na seção 5 temos a análise e comparação de todos os modelos treinados, já na seção 6 nossas considerações finais e trabalhos futuros.
+
+Portando o objetivo desse trabalho é a comparação de diversas arquiteturas de redes recorrentes, aplicadas à resolução do problema de identificação de comentários tóxicos.
 
 \section{Trabalho Relacionado} \label{sec:relacionado}
 
