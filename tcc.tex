@@ -4,6 +4,7 @@
 
 \usepackage{graphicx,url}
 \usepackage{color}
+\usepackage{placeins}
 
 \usepackage[brazil]{babel}
 \usepackage[utf8]{inputenc}
@@ -385,18 +386,15 @@ Predição faz uma rede neural totalmente conectada e utiliza a função de ativ
 
 \subsection{Rede recorrente}
 
-Arquitetura base utilizada:
-
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=.2\textwidth]{images/graph_2.png}
 \caption{Rede recorrente simples}
 \label{fig:graph_2}
 \end{figure}
+\FloatBarrier
 
 \subsection{Rede recorrente com convolução}
-
-Arquitetura base utilizada:
 
 \begin{figure}[!htb]
 \centering
@@ -404,6 +402,7 @@ Arquitetura base utilizada:
 \caption{Rede recorrente com convolução.}
 \label{fig:graph}
 \end{figure}
+\FloatBarrier
 
 \subsubsection{Convolução}
 
@@ -448,7 +447,7 @@ A segmentação a seguir representa como os dados foram separados:
 
 A segmentação de testes não está inclusa nos dados públicos. Tal teste é feita através de dados não rotulados na plataforma Kaggle. É possível realizar um submissão com os rotulos e obter a acurácia. Essa segmentação não é de acesso público para evitar que modelos sobreajustem seus parâmetros, assim o resultado retornado garante a validade de generalização do modelo.
 
-\section{Análises de resultados}
+\section{Experimentos}
 
 Em primeira instância os modelos obtiveram resultados satisfatórios, alcançando acurácia próxima à melhor submissão deste problema.
 
