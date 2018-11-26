@@ -39,11 +39,11 @@
 \maketitle
 
 \begin{abstract}
-  The paper addresses the problem of multiclass sentiment analysis at the sentence level. Recurrent neural networks and their demonstrations have demonstrated successful modeling of feeling classifiers and last generation in language modeling with the same demonstration demonstrating efficiency and performance in various tasks. In the paper we propose the use of combinations of architecture together with a combination of convolutional techniques.
+  Recurring neural networks and their variations have been successful in modeling sentimental classifiers, and recently the modeling of languages ​​through this architecture has been shown to be effective at achieving the state of the art in various tasks. This paper addresses the problem of multiclass feelings analysis for comments in social networks. We aim to develop, train and evaluate the performance of different neural network architectures to classify toxic comments. In the development of the different models we deal with recurrent and convolutional methods, with performance evaluated through the percentage of hits obtained in the test data set. The model that obtained the best performance according to the metrics used was the short-term long-memory cell with unidirectional convolution, with accuracy of 98.25%.
 \end{abstract}
 
 \begin{resumo}
-  Este artigo aborda o problema da análise de sentimentos multiclasse no nível de sentença. Redes neurais recorrentes e suas variações demonstraram sucesso na modelagem de classificadores de sentimentos e recentemente a modelagem de linguagens através dessa arquitetura demonstrou-se eficaz atingindo o estado da arte em várias tarefas. Nesse trabalho propomos o uso destas variações arquitetura em conjunto com a combinação de técnicas convolucionais.
+  Redes neurais recorrentes e suas variações demonstraram sucesso na modelagem de classificadores de sentimentos, e recentemente a modelagem de linguagens através dessa arquitetura demonstrou-se eficaz atingindo o estado da arte em várias tarefas. Este trabalho aborda o problema de análise de sentimentos multiclasse para comentários em redes sociais. Objetivamos desenvolver, treinar e avaliar o desempenho de diferentes arquiteturas de redes neurais para classificação de comentários tóxicos. No desenvolvimento dos diferentes modelos abordamos métodos recorrentes e convolucionais, com desempenho avaliado através da porcentagem de acertos obtida no conjunto de dados de teste. O modelo que obteve melhor desempenho segundo as métricas utilizadas foi utilizando a célula de longa memória de curto termo com convolução unidirecional, com acurácia de 98,25%.
 \end{resumo}
 
 
@@ -194,7 +194,7 @@ A função sigmoide é utilizada na estrutura de células de longa memória de c
 Dada pela formula: 
 
 \begin{equation}
-    \sigma(Z) = 1/(1+e^{-Z})
+    tanh(Z)
 \end{equation}
 
 A imagem abaixo descreve a curva da tangente hiperbolica em um intervalo de 5 a -5.
@@ -256,7 +256,7 @@ Comumente, estabelecemos constantes os valores dos biases escolhidos de maneira 
 
 \subsection{Word Embeddings}
 
-Word embedding é o nome coletivo de um conjunto de técnicas de modelagem de linguagem e de aprendizado de recursos no processamento de linguagem natural, em que palavras ou frases do vocabulário são mapeadas para vetores de números reais. Com base na proximidade entre palavras é possível codificar-las em um conjunto de parâmetros que definam aproximadamente seu significado. Nesse espaço de palavras, é possível realizar operações, sendo que cada dimensão indica alguma característica pertencente a determinado elemento. A figura 6 ilustra como funcionam esses vetores.
+Word embedding é o nome coletivo de um conjunto de técnicas de modelagem de linguagem e de aprendizado de recursos no processamento de linguagem natural, em que palavras ou frases do vocabulário são mapeadas para vetores de números reais. Com base na proximidade entre palavras é possível codificar-las em um conjunto de parâmetros que definam aproximadamente seu significado. Nesse espaço de palavras, é possível realizar operações, sendo que cada dimensão indica alguma característica pertencente a determinado elemento. A figura 6 ilustra de forma bidimensional o funcionamento desses vetores.
 \begin{figure}
   \centering
   \includegraphics[width=1\textwidth]{images/wordembeddings.png}
