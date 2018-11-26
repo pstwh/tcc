@@ -59,7 +59,7 @@ No problema a ser discutido nesse artigo, com base de dados contendo comentário
 (a\lambda1, a\lambda2, a\lambda3, a\lambda4, a\lambda5, a\lambda6)
 \]
 
-Onde $a \lambda i$ se refere a probabilidade de cada classe, que respectivamente representam: Tóxico; Muito Tóxico; Obsceno; Ameaça; Insulto; Ódio de Identidade. O conjunto de dados utilizado para treinar esse modelo foi obtido através da plataforma Kaggle, já previamente rotulado conforme as classes descritas anteriormente.
+Onde $a \lambda i$ se refere a probabilidade de cada classe, que respectivamente representam: Tóxico; Muito Tóxico; Obsceno; Ameaça; Insulto; Ódio de Identidade.
 
 A análise de sentimentos é determinada comumente de maneira binária (positiva e negativa), porém abordagens multiclasse também são possíveis. Em uma abordagem multiclasse determinado comentário pode possuir diversos rótulos simultaneamente. Para definir a ativação de determinada classe, é definido um limiar. Tal limiar só é válido devido a função de ativação utilizada como saída na rede.
 
@@ -237,9 +237,7 @@ O cálculo do custo por entropia cruzada é dado pela seguinte formula:
 Onde $p(x)$ é o rótulo, e $q(x)$ o saída do modelo.
 \subsection{Regularização}
 
-Um problema central em aprendizado de máquina é como fazer um algoritmo que irá ter um bom desempenho não somente nos dados de treino, mas também em novos dados inseridos nele. Muitas estratégias usadas em aprendizado de máquina são explicitamente desenvolvidas para reduzir o erro no conjunto de teste, possivelmente à custa de um erro maior no conjunto de treino. Essas estratégias são conhecidas coletivamente como regularização \cite{Goodfellow-et-al-2016}.
-
-O Dropout oferece pouco custo computacional, porém um método poderoso para regularização de uma ampla família de modelos \cite{DBLP:journals/corr/abs-1207-0580}.
+Um problema central em aprendizado de máquina é como fazer um algoritmo que irá ter um bom desempenho não somente nos dados de treino, mas também em novos dados inseridos nele. Muitas estratégias usadas em aprendizado de máquina são explicitamente desenvolvidas para reduzir o erro no conjunto de teste, possivelmente à custa de um erro maior no conjunto de treino. Essas estratégias são conhecidas coletivamente como regularização \cite{Goodfellow-et-al-2016}. O Dropout oferece pouco custo computacional, porém um método poderoso para regularização de uma ampla família de modelos \cite{DBLP:journals/corr/abs-1207-0580}.
 
 Especificamente, dropout treina o conjunto consistindo através de sub-redes geradas pela remoção de unidades que fazem parte das camadas intermediarias ou de entrada, removendo uma proporção \textit{d} de neurônios temporariamente com base em um atributo \textit{p}, que indica a probabilidade. A remoção de neurônios pode desbalancear o aprendizado, logo o mesmo é normalizado para a quantidade de neurônios remanescente. A figura abaixo ilustra a técnica de dropout: \cite{Goodfellow-et-al-2016}.
 
@@ -388,6 +386,8 @@ Predição faz uma rede neural totalmente conectada e utiliza a função de ativ
 
 \subsection{Rede recorrente}
 
+Apresenta células em sequência, formando uma rede recorrente. A camada de \textit{embeddings} transforma a entrada de dados em matrizes de características, sendo que o \textit{dropout} tem o objetivo de normalizar e evitar sobreajuste.
+
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=.2\textwidth]{images/graph_2.png}
@@ -397,6 +397,8 @@ Predição faz uma rede neural totalmente conectada e utiliza a função de ativ
 \FloatBarrier
 
 \subsection{Rede recorrente com convolução}
+
+Apresenta a adição de câmadas convolucionais e de \textit{pooling}, com a intenção de relacionar características de uma dimensão extraidas pela rede recorrente.
 
 \begin{figure}[!htb]
 \centering
