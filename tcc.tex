@@ -39,7 +39,7 @@
 \maketitle
 
 \begin{abstract}
-  The article addresses the problem of multiclass sentiment analysis at the sentence level. Recurrent neural networks and their demonstrations have demonstrated successful modeling of feeling classifiers and last generation in language modeling with the same demonstration demonstrating efficiency and performance in various tasks. In the paper we propose the use of combinations of architecture together with a combination of convolutional techniques.
+  The paper addresses the problem of multiclass sentiment analysis at the sentence level. Recurrent neural networks and their demonstrations have demonstrated successful modeling of feeling classifiers and last generation in language modeling with the same demonstration demonstrating efficiency and performance in various tasks. In the paper we propose the use of combinations of architecture together with a combination of convolutional techniques.
 \end{abstract}
 
 \begin{resumo}
@@ -51,7 +51,7 @@
 
 Discutir assuntos na internet pode ser difícil. Ameaças, ofensas pessoais, e assédio, podem criar um ambiente tóxico dentro de fóruns e redes sociais, e até afastar usuários. As plataformas lutam para combater efetivamente discussões tóxicas e limitar ou desligar usuários com essas práticas, porém essa é uma tarefa de difícil automação exigindo milhares de sentenças rotuladas e métodos capazes de analisar de maneira eficaz o contexto e significado.
 
-Recentemente, em resposta ao crescimento do uso de redes sociais, comentários são publicados massivamente. Como a escrita compõe grande parte de todos os dados gerados pela humanidade, que até então, apenas serviam para consultas, hoje servem como base de dados para o desenvolvimento de sistemas de processamento de linguagens naturais. Aplicando técnicas de aprendizagem profunda podemos automatizar processos, análises e classificação de textos com uma boa taxa de acerto, comparado à métodos bayesianos, por exemplo.
+Recentemente, em resposta ao crescimento do uso de redes sociais, comentários são publicados massivamente. Como a escrita compõe grande parte de todos os dados gerados pela humanidade, que até então, apenas serviam para consultas, hoje servem como base de dados para o desenvolvimento de sistemas de processamento de linguagens naturais. Aplicando técnicas de aprendizagem profunda são realizadas automações de processos, análises e classificação de textos.
 
 No problema a ser discutido nesse artigo, com base de dados referente a comentários tóxicos, temos basicamente a análise de sentimentos conforme as classes rotuladas, sendo utilizada para representar em quais classes de toxicidade determinada sentença pertence. Formalmente, o objetivo da análise de sentimentos nesse trabalho é extrair a seguinte sêxtupla:
 
@@ -74,11 +74,11 @@ As redes neurais recorrentes possuem como característica a capacidade de trabal
 
 A adição de convoluções, também podem ser utilizadas, para melhorar a detecção de padrões nas saídas de redes recorrentes. As redes convolucionais normalmente são utilizadas para extração de características em imagens \cite{lecun:98} ou quando as dimensões estão extremamente relacionadas. No caso imagens, são utilizadas convoluções de duas dimensões, no caso de vídeo ou objetos tridimensionais, três dimensões. Nesse artigo será avaliado o desempenho de convoluções de uma dimensão buscando o relacionamento dessas saídas.
 
-Nesse trabalho as arquiteturas utilizadas aspiram utilizar os diversos conceitos disponíveis em busca de uma solução melhor que o aprendizado de máquina clássico e conceitos individuais. Na seção 2 é descrito brevemente trabalhos relacionados na área, tanto em aprendizado de máquina clássico, quanto aprendizado de máquina profundo. Na seção 3 revisaremos os principais conceitos para o entendimento da seção 4, que se refere as arquiteturas utilizadas nesse artigo. Na seção 5 temos a análise e comparação de todos os modelos treinados, já na seção 6 nossas considerações finais e trabalhos futuros.
+Nesse trabalho as arquiteturas utilizadas aspiram utilizar os diversos conceitos disponíveis em busca de uma solução melhor que o aprendizado de máquina clássico e conceitos individuais. Na seção 2 é descrito brevemente trabalhos relacionados na área, tanto em aprendizado de máquina clássico, quanto aprendizado de máquina profundo. Na seção 3 estão os principais conceitos para o entendimento da seção 4, que se refere as arquiteturas utilizadas nesse artigo. Na seção 5 temos a análise e comparação de todos os modelos treinados, já na seção 6 nossas considerações finais e trabalhos futuros.
 
 Portanto o objetivo desse trabalho é a comparação de diversas arquiteturas de redes recorrentes e técnicas de processamento linguagens naturais, aplicadas à resolução do problema de identificação de comentários tóxicos.
 
-\section{Trabalho Relacionado} \label{sec:relacionado}
+\section{Trabalhos Relacionados} \label{sec:relacionado}
 
 A análise de sentimentos está sob grande aprimoramento devido a aplicação de redes recorrentes \cite{karpathy:2015} e redes convolucionais \cite{lecun:98}. Esses casos descritos anteriormente se referem ao estado da arte dessa atividade.
 
@@ -93,7 +93,7 @@ Transferência de aprendizado é uma técnica onde um modelo já treinado é rea
 \section{Fundamentação Teórica} \label{sec:revisao}
 \subsection{Redes Artificiais Profundas (\textit{deep feedforward networks})}
 
-Redes \textit{feedforward} profundas, também chamadas de redes neurais feedforward, ou perceptrons multicamadas (\textit{multilayer perceptrons}), são essenciais nos modelos de aprendizagem profunda. O objetivo de uma rede feedforward é aproximar uma função $f$. Por exemplo, para um classificador, $y = f ∗ (x)$ mapeia uma entrada $x$ para uma categoria $y$. Uma rede feedforward define um mapeamento $y = f (x; θ)$ e aprende o valor dos parâmetros $θ$ que resultam na melhor aproximação da função.
+Redes \textit{feedforward} profundas, também chamadas de redes neurais feedforward, ou perceptrons multicamadas (\textit{multilayer perceptrons}), são essenciais nos modelos de aprendizagem profunda. O objetivo de uma rede feedforward é aproximar uma função $f$. Por exemplo, para um classificador, $y = f ∗ (x)$ mapeia uma entrada $x$ para uma categoria $y$. Uma rede feedforward define um mapeamento $y = f (x θ)$ e aprende o valor dos parâmetros $θ$ que resultam na melhor aproximação da função.
 
 Esses modelos são chamados \textit{feedforward} porque a informação flui através da função que está sendo avaliada de $x$, através dos cálculos intermediários usados ​​para definir $f$ e, finalmente, para a saída $y$. Não há conexões de retroalimentação nas quais as saídas do modelo são realimentadas. Quando redes neurais \textit{feedforward} são estendidas para incluir conexões de retroalimentação, elas são chamadas de redes neurais recorrentes.
 
@@ -121,14 +121,14 @@ A imagem a seguir demonstra alguns casos de redes recorrentes possíveis:
 \centering
 \includegraphics[width=1\textwidth]{images/rnn-effectiveness-examples.jpeg}
 \caption{
-    Possibilidades de entrada de saída em redes reccorentes. \cite{karpathy:2015}
+    Possibilidades de entrada de saída em redes recorrentes. \cite{karpathy:2015}
 }
 \label{fig:sigmoid}
 \end{figure}
 
 \subsection{Funções de ativação}
 
-Funções de ativação não lineares, dão capacidades não lineares para redes neurais \cite{lecun:98}. As funções de ativação nos permitem ir além de problemas linearmente separáveis. Caso essas funções não sejam adicionadas, o modelo apenas terá a capacidade de resolver problemas simples, sendo que todas as camadas formarão apenas um modelo linear.
+Funções de ativação não lineares dão capacidades não lineares para redes neurais \cite{lecun:98}. As funções de ativação nos permitem ir além de problemas linearmente separáveis. Caso essas funções não sejam adicionadas, o modelo apenas terá a capacidade de resolver problemas simples, sendo que todas as camadas formarão apenas um modelo linear.
 
 É possível visualizar de maneira trivial na representação abaixo:
 
@@ -187,7 +187,7 @@ A imagem abaixo descreve a curva sigmoidal em um intervalo de 5 a –5.
 
 Aplicando essa função no output de uma transformação linear, teremos como resultado um valor entre 0 e 1.
 
-Além de a função sigmoide ser utilizada na estrutura de células de longa memória de curto termo (\textit{long-short term memory}) e células recorrentes bloqueadas (\textit{gated recurrent units}), também pode ser usada na saída do modelo. Poderíamos por exemplo, na classificação de sentimentos em texto, considerar valores próximos de 0 um sentimento negativo, e próximos de 1, positivo. Os valores maiores iguais a 0.5 serão classificados como positivos, enquanto 0.5 serão classificados como negativos.
+A função sigmoide é utilizada na estrutura de células de longa memória de curto termo (\textit{long-short term memory}) e células recorrentes bloqueadas (\textit{gated recurrent units}), também pode ser usada na saída do modelo. Por exemplo, na classificação de sentimentos em texto, considerar valores próximos de 0 para um sentimento negativo, e próximos de 1, para ositivo. Os valores maiores iguais a 0.5 serão classificados como positivos, enquanto 0.5 serão classificados como negativos.
 
 \subsubsection{Tangente Hiperbólica}
 
@@ -429,10 +429,10 @@ Embora a arquitetura do modelo contenha grande parte da informação sobre nosso
   \item Regularização: Para evitar sobreajuste foi utilizada a técnica de \textit{dropout} com probabilidade \textit{p} de remover um nó de 0.5.\\
   \item O tamanho do \textit{minibatch} escolhido foi 128, esse valor se restringe ao tamanho da memória da placa gráfica utilizada para treino. Logo esse valor provou-se ideal em nosso hardware.\\
   \item O número de épocas escolhido para treinamento foi cinco, devido a limitação de hardware e quantidade de modelos a serem treinados, esse número demonstrou-se suficiente para garantir a convergência do modelo e evitar o ajuste exagerado, garantindo generalização.\\
-  \item A taxa de aprendizado durante cada adição do gradiente por \textit{minibatch} foi escolhida arbitrariamente e de maneira iterativa, obtendo-seo valor de 1e-3.
+  \item A taxa de aprendizado durante cada adição do gradiente por \textit{minibatch} foi escolhida arbitrariamente e de maneira iterativa, obtendo-se o valor de $10^{-3}$.
 \end{itemize}
 
-Os hiperparâmetros do otimizador foram definidos através dos valores padrões indicados \cite{DBLP:journals/corr/KingmaB14}. A taxa de aprendizado utiliza do processo de iteração, e o valor utilizado nas análises preliminares é arbitrário, sendo inicialmente 1x10-3. Os pesos das células foram inicializador através da inicialização Glorot \cite{glorot:10}).
+Os hiperparâmetros do otimizador foram definidos através dos valores padrões indicados \cite{DBLP:journals/corr/KingmaB14}. A taxa de aprendizado utiliza do processo de iteração, e o valor utilizado nas análises preliminares é arbitrário, sendo inicialmente $10^{-3}$. Os pesos das células foram inicializador através da inicialização Glorot \cite{glorot:10}).
 
 \subsection{Organização dos dados}
 
